@@ -15,7 +15,6 @@ C:\Users\{username}\AppData\Local\Programs\Python\Python310\Lib\site-packages\mi
 ```
 You have to edit it from this:
 ```python
-"command contains the function for creating the minecraft command"
 from ._helper import parse_rule_list, inherit_json, get_classpath_separator, get_library_path
 from ._internal_types.shared_types import ClientJson, ClientJsonArgumentRule
 from .runtime import get_executable_path
