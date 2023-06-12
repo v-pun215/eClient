@@ -19,7 +19,8 @@ Never gives you up.
 ## IMPORTANT!!
 The original PyCraft had infinite bugs that I had to troubleshoot. One of them I just couldn't fix. 
 So now you will have to manually go to the folder where minecraft-launcher-lib is located and edit command.py.
-    > The file location could be (on Windows):
+
+The file location could be (on Windows):
 ```bash
 C:\Users\{username}\AppData\Local\Programs\Python\Python310\Lib\site-packages\minecraft_launcher_lib\command.py
 ```
