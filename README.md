@@ -1,3 +1,4 @@
+[![justforfunnoreally.dev badge](https://img.shields.io/badge/justforfunnoreally-dev-9ff)](https://justforfunnoreally.dev)
 # eClient
 A Minecraft Launcher written in Python.
 ## Based on shasankp000's PyCraft
