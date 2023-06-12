@@ -1,0 +1,12 @@
+wheel
+wget
+minecraft_launcher_lib
+pyfiglet
+ttkbootstrap
+tkvideo
+requests
+Pillow
+tkhtmlview @ https://github.com/jwaxy/tkhtmlview-fixed-ithink/releases/download/tagtag/tkhtmlview.zip
+speedtest-cli
+psutil
+webview

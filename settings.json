@@ -1,0 +1,37 @@
+{
+    "accessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJpYXQiOjE2ODY1NDY1ODAsImV4cCI6MTY4NjcxOTM4MCwic2NvcGUiOiJvYnRhaW5fb3duX2FjY291bnRfaW5mbyBtaW5lY3JhZnRfc2VydmVyX3Nlc3Npb24iLCJlbHktY2xpZW50LXRva2VuIjoiaGJ1LUtvMTF3VE9aWmtSTjdNb2xTWFNrU3l1STl1aWZxZC1Yckh4dDBiRTVXc2NUZ2NRUk41SGtySGdIaUZudXpqcEtFb3J5Zm10RTZ1Z0JBOG1yaVBFYlU5dms2dzF1U3B0X0l3Iiwic3ViIjoiZWx5fDQ0OTkyNjcifQ.gxOBQqraE9YDX3QmlPwFMSqVcVeYI72aVNMCxVJCkD9yacf3ni6ZeWI2eTBDNvwpWvFuvy17tIkf_5bNvQ1TGg",
+    "clientToken": "e07724eb-d626-4edf-bb02-e08b7ad22510",
+    "User-info": [
+        {
+            "username": "v_pun215",
+            "AUTH_TYPE": "ElyBy Login",
+            "UUID": "4e18f53666a14ac78a0cbbade8939f2c"
+        }
+    ],
+    "PC-info": [
+        {
+            "OS": "Windows-10-10.0.22621-SP0",
+            "Total-Ram": "15.74GB"
+        }
+    ],
+    "Minecraft-home": "C:\\Users\\DELL SYSTEM\\Desktop\\PyCraft-main\\.minecraft",
+    "selected-version": "Fabric: 1.20",
+    "Fps-Boost": false,
+    "Tor-Enabled": false,
+    "setting-info": [
+        {
+            "fps_boost_selected": false,
+            "tor_enabled_selected": false,
+            "allocated_ram_selected": 5914.93
+        }
+    ],
+    "allocated_ram": 5914.93,
+    "jvm-args": [
+        "-javaagent:C:\\Users\\DELL SYSTEM\\Desktop\\PyCraft-main/authlib/authlib-injector-1.1.39.jar=ely.by",
+        "-Xmx5914M",
+        "-Xms128M"
+    ],
+    "executablePath": "java",
+    "ramlimiterExceptionBypassed": false,
+    "ramlimiterExceptionBypassedSelected": false
+}
