@@ -1,7 +1,14 @@
 # eClient
-A Minecraft launcher written in Python.
+A Minecraft Launcher written in Python.
 ## Based on shasankp000's PyCraft
 Copyright (c) 2021, shasankp000
+See his work: https://github.com/shasankp000/PyCraft
+## Features
+Can launch all versions of Minecraft Java Edition (starting from 1.0)
+Has a Mod Installer that I fixed (from PyCraft)
+Can install Forge and Fabric.
+Never gives you up.
+## Screenshots
 ## Installation
     > Download the latest Github Release. 
     > Run install.py
