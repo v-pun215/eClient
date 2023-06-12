@@ -24,7 +24,9 @@ eClient
 
 ## Installation
 > Download the latest Github Release. 
+
 > Run install.py
+
 > Now, you have to install the SF Pro Display Font from https://earthsoft.me/sf.OTF.
     
 ## IMPORTANT!!
