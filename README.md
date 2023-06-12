@@ -10,8 +10,17 @@ Has a Mod Installer that I fixed (from PyCraft)
 
 Can install Forge and Fabric.
 
+Ability to login with Mojang, Ely.by and Offline Accounts.
+
 Never gives you up.
 ## Screenshots
+eClient Updater
+![image](https://github.com/v-pun215/eClient/assets/67716965/6d4b8301-49fd-4da8-8593-3e507e421348)
+
+eClient
+![image](https://github.com/v-pun215/eClient/assets/67716965/79fa0d13-949f-43eb-bac5-44f84b25a509)
+
+
 ## Installation
     > Download the latest Github Release. 
     > Run install.py
