@@ -3,13 +3,13 @@ A Minecraft launcher written in Python.
 ## Based on shasankp000's PyCraft
 Copyright (c) 2021, shasankp000
 ## Installation
-> Download the latest Github Release. 
-> Run install.py
-> You're done! Now run eclient.py to open the launcher.
+    > Download the latest Github Release. 
+    > Run install.py
+    > You're done! Now run eclient.py to open the launcher.
 ## IMPORTANT!!
 The original PyCraft had infinite bugs that I had to troubleshoot. One of them I just couldn't fix. 
 So now you will have to manually go to the folder where minecraft-launcher-lib is located and edit command.py.
-> The file location could be (on Windows):
+    > The file location could be (on Windows):
 ```bash
 C:\Users\{username}\AppData\Local\Programs\Python\Python310\Lib\site-packages\minecraft_launcher_lib\command.py
 ```
@@ -256,7 +256,7 @@ def get_minecraft_command(version: str, minecraft_directory: Union[str, os.PathL
 
     return command
 ```
-To this:
+    > To this:
 ```python
 from .helper import parse_rule_list, inherit_json, get_classpath_separator, get_library_path
 from .runtime import get_executable_path
