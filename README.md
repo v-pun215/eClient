@@ -256,7 +256,7 @@ def get_minecraft_command(version: str, minecraft_directory: Union[str, os.PathL
 
     return command
 ```
-    > To this:
+> To this:
 ```python
 from .helper import parse_rule_list, inherit_json, get_classpath_separator, get_library_path
 from .runtime import get_executable_path
