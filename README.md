@@ -25,7 +25,7 @@ eClient
 ## Installation
 > Download the latest Github Release. 
 > Run install.py
-> Now, you have to install the SF Pro Display Font from https://github.com/v-pun215/eClient/fonts/sf.otf
+> Now, you have to install the SF Pro Display Font from here(https://github.com/v-pun215/eClient/raw/main/fonts/sf.OTF).
     
 ## IMPORTANT!!
 The original PyCraft had infinite bugs that I had to troubleshoot. One of them I just couldn't fix. 
