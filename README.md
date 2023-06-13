@@ -14,6 +14,8 @@ This launcher downloads Minecraft from the official libraries.minecraft.net.
 This launcher's main goal is not to pirate the game, its simply to port the launcher to Python :)
 ## Known Bugs -
 When launching Minecraft 1.20, Minecraft loads in with 'Failed to Quick Play'. Trying to fix this issue.
+
+Not able to login to Mojang accounts anymore (Mojang disabled the API)
 ## Features
 Can launch all versions of Minecraft Java Edition (starting from 1.0)
 
