@@ -18,9 +18,20 @@ Never gives you up.
 eClient Updater
 ![image](https://github.com/v-pun215/eClient/assets/67716965/6d4b8301-49fd-4da8-8593-3e507e421348)
 
-eClient
+eClient (Home)
 ![image](https://github.com/v-pun215/eClient/assets/67716965/79fa0d13-949f-43eb-bac5-44f84b25a509)
 
+eClient (Installations tab)
+![image](https://github.com/v-pun215/eClient/assets/67716965/293b5a0d-f96a-432d-b5bb-4e55f38f2804)
+
+eClient (Settings tab)
+![image](https://github.com/v-pun215/eClient/assets/67716965/e06d0c8f-100a-4066-be5e-22b1b5f6baa0)
+
+eClient (Additional Settings tab)
+![image](https://github.com/v-pun215/eClient/assets/67716965/5c2e44b1-ce4a-4e51-9918-3cd875ca5b2a)
+
+eClient (Mod Installer)
+![image](https://github.com/v-pun215/eClient/assets/67716965/40972195-edcb-46c6-bde0-da05384c97ec)
 
 ## Installation
 > Download the latest Github Release. 
