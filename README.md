@@ -39,6 +39,8 @@ eClient (Mod Installer)
 > Run install.py
 
 > Now, you have to install the SF Pro Display Font from https://earthsoft.me/sf.OTF.
+
+> Run eclient.py and you're done! (Report any bugs on the issues section.)
     
 ## IMPORTANT!!
 The original PyCraft had infinite bugs that I had to troubleshoot. One of them I just couldn't fix. 
