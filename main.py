@@ -362,7 +362,6 @@ class Pycraft():
             505,280,
             image=self.background_img2)
 
-        self.img9 = PhotoImage(file = f"img/img9.png")
         self.b9 = Button(
             self.p1,
             text="Download",
