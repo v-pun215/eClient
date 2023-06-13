@@ -710,7 +710,7 @@ class Pycraft():
 
         self.canvas.create_text(
             70, 550,
-            text = "v1.0-beta",
+            text = "v1.0-beta2",
             fill = "white",
             font = ("SF Pro Display", int(16.0)))
 
