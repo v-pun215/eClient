@@ -4,6 +4,8 @@ A Minecraft Launcher written in Python.
 ## Based on shasankp000's PyCraft
 Copyright (c) 2021, shasankp000
 See his work: https://github.com/shasankp000/PyCraft
+# Known Bugs -
+When launching Minecraft 1.20, Minecraft loads in with 'Failed to Quick Play'. Trying to fix this issue.
 ## Features
 Can launch all versions of Minecraft Java Edition (starting from 1.0)
 
