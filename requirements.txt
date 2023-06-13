@@ -9,4 +9,4 @@ Pillow
 tkhtmlview @ https://github.com/jwaxy/tkhtmlview-fixed-ithink/releases/download/tagtag/tkhtmlview.zip
 speedtest-cli
 psutil
-webview
+pywebview
