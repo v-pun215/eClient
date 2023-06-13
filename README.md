@@ -4,7 +4,15 @@ A Minecraft Launcher written in Python.
 ## Based on shasankp000's PyCraft
 Copyright (c) 2021, shasankp000
 See his work: https://github.com/shasankp000/PyCraft
-# Known Bugs -
+## Project Overview
+This launcher aims to be the best launcher (that I can code) built for both Windows and Linux.
+
+Update for macOS is coming soon.
+
+This launcher downloads Minecraft from the official libraries.minecraft.net.
+
+This launcher's main goal is not to pirate the game, its simply to port the launcher to Python :)
+## Known Bugs -
 When launching Minecraft 1.20, Minecraft loads in with 'Failed to Quick Play'. Trying to fix this issue.
 ## Features
 Can launch all versions of Minecraft Java Edition (starting from 1.0)
