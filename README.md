@@ -4,6 +4,7 @@ A Minecraft Launcher written in Python.
 ## Based on shasankp000's PyCraft
 Copyright (c) 2021, shasankp000
 See his work: https://github.com/shasankp000/PyCraft
+# Edit: Project is on hold right now, got to fix some major bugs.
 ## Project Overview
 This launcher aims to be the best launcher (that I can code) built for both Windows and Linux.
 
