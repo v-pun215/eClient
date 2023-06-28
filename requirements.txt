@@ -1,6 +1,6 @@
 wheel
 wget
-minecraft_launcher_lib
+minecraft_launcher_lib==5.3
 pyfiglet
 ttkbootstrap
 tkvideo
