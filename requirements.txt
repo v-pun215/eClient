@@ -10,3 +10,4 @@ tkhtmlview @ https://github.com/jwaxy/tkhtmlview-fixed-ithink/releases/download/
 speedtest-cli
 psutil
 pywebview
+customtkinter
