@@ -13,6 +13,8 @@ import platform
 import psutil
 import platform
 import base64
+from ctypes import windll
+windll.shcore.SetProcessDpiAwareness(1)
 
 currn_dir = os.getcwd()
 mc_dir = r"{}/.minecraft".format(currn_dir)
@@ -244,7 +246,7 @@ def checksettings():
         elif os_name.startswith("Windows"):
             with open("main.bat", "w") as f:
                 f.write("taskkill /f /im python.exe\n")  #frees up cpu and memory
-                f.write("python main.py")
+                f.write("yeah.cmd")
                 f.close()
                 root.after(23000, lambda: t2.start())
 
@@ -260,7 +262,7 @@ def checksettings():
         elif os_name.startswith("Windows"):
             with open("main.bat", "w") as f:
                 f.write("taskkill /f /im python.exe\n")  #frees up cpu and memory
-                f.write("python main.py")
+                f.write("yeah.cmd")
                 f.close()
             root.after(23000, lambda: t2.start())
 
