@@ -28,15 +28,29 @@ import psutil
 from downloadMods import downloadMod
 import customtkinter
 import webview
-
+import PIL.Image as im
+import PIL.ImageTk as imtk
+from ctypes import windll
+windll.shcore.SetProcessDpiAwareness(1)
 print("")
-print("Based on Pycraft. Changed a LOT of code and fixed a LOT of bugs to make this compatible with Python 3.10.")
+print('''
+           $$$$$$\  $$\ $$\                      $$\     
+          $$  __$$\ $$ |\__|                     $$ |    
+ $$$$$$\  $$ /  \__|$$ |$$\  $$$$$$\  $$$$$$$\ $$$$$$\   
+$$  __$$\ $$ |      $$ |$$ |$$  __$$\ $$  __$$\\_$$  _|  
+$$$$$$$$ |$$ |      $$ |$$ |$$$$$$$$ |$$ |  $$ | $$ |    
+$$   ____|$$ |  $$\ $$ |$$ |$$   ____|$$ |  $$ | $$ |$$\ 
+\$$$$$$$\ \$$$$$$  |$$ |$$ |\$$$$$$$\ $$ |  $$ | \$$$$  |
+ \_______| \______/ \__|\__| \_______|\__|  \__|  \____/ 
+                                                         
+                                                         
+                                                         
+''')
+print("Based on PyCraft. Changed a LOT of code and fixed a LOT of bugs\n to make this compatible with Python 3.10.")
 print("Copyright © v-pun215.")
-print("Peace Out :)")
+print("")
 print("Starting eClient....")
-#time.sleep(5)
-def damn():
-    print("Yeah")
+time.sleep(5)
 
 
 
@@ -45,7 +59,7 @@ style.configure("TNotebook.Tab", foreground="#15d38f", background="#23272a", bor
 #style.theme_create("custom.TNotebook", foreground="#15d38f", background="#23272a", bordercolor="#072A6C")
 
 currn_dir = os.getcwd()
-mc_dir = r"{}/.minecraft".format(currn_dir)
+mc_dir = r"{}\.minecraft".format(currn_dir)
 OS = platform.platform()
 
 
@@ -224,12 +238,12 @@ def reload_data():
 
 
 
-print(OS)
+print("Your OS is {}. Nice one!".format(OS))
 
 
 
 
-if os.path.exists(r"{}/.minecraft".format(currn_dir)):
+if os.path.exists(r"{}\.minecraft".format(currn_dir)):
     print("Existing minecraft installation, checking for versions...")
 
 else:
@@ -248,7 +262,7 @@ def check_internet(url='https://www.google.com', timeout=5):
         return True
     except requests.ConnectionError:
         connected = False
-        print("No internet connection available. Sorry!")
+        print("No internet connection available.")
         Pycraft()
     except requests.exceptions.Timeout:
         connected = False
@@ -278,12 +292,14 @@ class Pycraft():
     global auth_type
     global jvm_args
 
-
+    print("")
     print('------EXTREMELY IMPORTANT------')
-    print("After the Installation of any MC Version is complete, press ALT + F4 to close the launcher.")
-    print("Then launch the launcher again.")
+    print("")
+    print("After the Installation of any MC Version is complete, press stop download. ")
     print("I am still trying to fix this problem.")
-    print("Help is wanted.")
+    print("")
+    print("-------------------------------")
+    print("")
 
     global data
 
@@ -357,7 +373,7 @@ class Pycraft():
             relief = "ridge")
         self.canvas2.place(x = 0, y = 0)
 
-        self.background_img2 = PhotoImage(file = r"C:\Users\DELL SYSTEM\Desktop\PyCraft-main\img\mc2.png")
+        self.background_img2 = PhotoImage(file = r"img/mc2.png")
         self.background2 = self.canvas2.create_image(
             505,280,
             image=self.background_img2)
@@ -545,7 +561,10 @@ class Pycraft():
             highlightthickness = 0,
             relief = "ridge")
         self.canvas.place(x = 0, y = 0)
-
+        
+        def resize_image(e, updated_background_image):
+            resized_background_image = updated_background_image.resize((e.width, e.height), im.ANTIALIAS)
+            return resized_background_image
         self.background_img = PhotoImage(file = f"img/mc2.png")
         self.background = self.canvas.create_image(
             505,280,
@@ -682,18 +701,18 @@ class Pycraft():
 
         if connected == True:
 
-            self.l3.config(text=data["User-info"][0]["username"], font=self.custom_font3, foreground="white", background="#e7bb9e")
+            self.l3.config(text=data["User-info"][0]["username"], font=self.custom_font3, foreground="white", background="#689BCA")
 
             self.custom_font1 = Font(family="SF Pro Display", size=14)
 
             self.acc_method = data["User-info"][0]["AUTH_TYPE"]
 
             if self.acc_method == "Mojang Login":
-                self.l4.config(text="Mojang Account", font=self.custom_font1, foreground="white", background="#e7bb9e")
+                self.l4.config(text="Mojang Account", font=self.custom_font1, foreground="white", background="#689BCA")
             elif self.acc_method == "ElyBy Login":
-                self.l4.config(text="ElyBy Account", font=self.custom_font1, foreground="white", background="#e7bb9e")
+                self.l4.config(text="ElyBy Account", font=self.custom_font1, foreground="white", background="#689BCA")
             elif self.acc_method == "Offline Login":
-                self.l4.config(text="Offline Account", font=self.custom_font1, foreground="white", background="#e7bb9e")
+                self.l4.config(text="Offline Account", font=self.custom_font1, foreground="white", background="#689BCA")
 
         elif connected == False:
 
@@ -701,16 +720,16 @@ class Pycraft():
                 json.dump(data, f, indent=4)
                 f.close()
 
-            self.l3.config(text=data["User-info"][0]["username"], font=self.custom_font3, foreground="white", background="#C9CDEC")
+            self.l3.config(text=data["User-info"][0]["username"], font=self.custom_font3, foreground="white", background="#689BCA")
 
             self.custom_font1 = Font(family="SF Pro Display", size=14)
 
-            self.l4.config(text="User is offline", font=self.custom_font1, foreground="white", background="#C9CDEC")
+            self.l4.config(text="User is offline", font=self.custom_font1, foreground="white", background="#689BCA")
 
 
         self.canvas.create_text(
-            70, 550,
-            text = "v1.0-beta2",
+            55, 550,
+            text = "v1.0",
             fill = "white",
             font = ("SF Pro Display", int(16.0)))
 
