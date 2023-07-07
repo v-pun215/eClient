@@ -1,8 +1,12 @@
 # eClient
 [![justforfunnoreally.dev badge](https://img.shields.io/badge/justforfunnoreally-dev-9ff)](https://justforfunnoreally.dev)
+
 A Minecraft Launcher written in Python.
+
 Based on PyCraft by shasankp000.
+
 Copyright (c) 2023, shasankp000.
+
 See his work: https://github.com/shasankp000/PyCraft
 
 ## Project Overview
