@@ -1,3 +1,4 @@
+
 # eClient
 [![justforfunnoreally.dev badge](https://img.shields.io/badge/justforfunnoreally-dev-9ff)](https://justforfunnoreally.dev)
 
@@ -8,6 +9,10 @@ Based on PyCraft by shasankp000.
 Copyright (c) 2023, shasankp000.
 
 See his work: https://github.com/shasankp000/PyCraft
+
+## NEW LOGO!
+![icon](https://github.com/v-pun215/eClient/assets/67716965/ca4560eb-dc12-41ef-9b45-0ede2d32ffca)
+
 
 ## Project Overview
 This launcher aims to be the best launcher (that I can code) built for both Windows (tested) and Linux (not tested).
