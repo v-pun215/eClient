@@ -31,7 +31,11 @@ import webview
 import PIL.Image as im
 import PIL.ImageTk as imtk
 from ctypes import windll
+import ctypes
+import webbrowser
 windll.shcore.SetProcessDpiAwareness(1)
+myappid = u'vpun215.eclient.idk.1.0' # arbitrary string
+ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 print("")
 print('''
            $$$$$$\  $$\ $$\                      $$\     
@@ -46,16 +50,18 @@ $$   ____|$$ |  $$\ $$ |$$ |$$   ____|$$ |  $$ | $$ |$$\
                                                          
                                                          
 ''')
-print("Based on PyCraft. Changed a LOT of code and fixed a LOT of bugs\n to make this compatible with Python 3.10.")
+print("Based on eClient. Changed a LOT of code and fixed a LOT of bugs\n to make this compatible with Python 3.10.")
 print("Copyright © v-pun215.")
 print("")
 print("Starting eClient....")
-time.sleep(5)
+#time.sleep(5)
 
 
 
-style = Style(theme="flatly") #Sets the theme of the comboboxes and progressbar. Cosmo is a light-blue theme
-style.configure("TNotebook.Tab", foreground="#15d38f", background="#23272a", bordercolor="#072A6C")
+
+style = Style(theme="darkly") #Sets the theme of the comboboxes and progressbar. Cosmo is a light-blue theme
+style.configure("TNotebook", tabposition='n')
+style.configure("TNotebook.Tab", foreground="#15d38f", background="#4d4d4d", bordercolor="#072A6C", tabposition='n')
 #style.theme_create("custom.TNotebook", foreground="#15d38f", background="#23272a", bordercolor="#072A6C")
 
 currn_dir = os.getcwd()
@@ -263,16 +269,16 @@ def check_internet(url='https://www.google.com', timeout=5):
     except requests.ConnectionError:
         connected = False
         print("No internet connection available.")
-        Pycraft()
+        eClient()
     except requests.exceptions.Timeout:
         connected = False
         print("Connection Timed Out.")
-        Pycraft()
+        eClient()
 
 
 
 
-class Pycraft():
+class eClient():
     global currn_dir
     global connected
     global fps_boost_selected
@@ -300,6 +306,8 @@ class Pycraft():
     print("")
     print("-------------------------------")
     print("")
+    def docs(self):
+        webbrowser.open('https://github.com/v-pun215/eClient')
 
     global data
 
@@ -390,7 +398,7 @@ class Pycraft():
             )
 
         self.b9.place(
-            x = 16, y = 500,
+            x = 1, y = 515,
             width = 249,
             height = 48)
 
@@ -407,14 +415,14 @@ class Pycraft():
             bootstyle="info-outline"
             )
         self.b10.place(
-            x=646, y=500,
-            width = 249,
+            x=880, y=515,
+            width = 139,
             height = 48
         )
 
 
         self.canvas2.create_text(
-                120, 50.0,
+                100, 50.0,
                 text = "Run Options",
                 fill = "white",
                 font = ("SF Pro Display", int(16.0), "bold"))
@@ -448,7 +456,7 @@ class Pycraft():
                 self.offversionsList["state"] = "readonly"
                 self.offversionsList.current(0)
             except:
-                showerror(message="There are no downloaded versions. Exiting....")
+                showerror(message="There are no downloaded versions. If you have downloaded versions, please restart the launcher.")
 
 
         else:
@@ -506,11 +514,7 @@ class Pycraft():
 
             self.frversionsList.bind('<<ComboboxSelected>>')
 
-            self.fpsversionsList = Combobox(self.p1, width=15)
-            self.fpsversionsList.place(x=320, y=280)
-            self.fpsversionsList["values"] = self.fpsversions
-            self.fpsversionsList["state"] = "readonly"
-            self.fpsversionsList.current(0)
+            
 
 
             self.canvas2.create_text(
@@ -531,12 +535,7 @@ class Pycraft():
                 fill = "white",
                 font = ("SF Pro Display", int(16.0), "bold"))
 
-            self.canvas2.create_text(
-                400, 250,
-                text = "FPS Client",
-                fill = "white",
-                font = ("SF Pro Display", int(16.0), "bold"))
-
+            
 
             self.selected_download = tk.StringVar()
             self.download_options = Combobox(self.p1, textvariable=self.selected_download, width=15)
@@ -576,6 +575,11 @@ class Pycraft():
             fill = "white",
             font = ("SF Pro Display", int(36.0), "bold")
         )
+        self.b13 = Button(
+            self.frame1,
+            text="Install New Mods",
+            command=self.launch_modinstaller,
+            bootstyle="primary")
         def mc_news():
             webview.create_window('Minecraft Changelog', 'https://changelog-eclient.earthsoft.me')
             webview.start()
@@ -602,6 +606,8 @@ class Pycraft():
             #width=20,
             command=lunar,
             bootstyle="info-outline")'''
+        
+        
 
         self.b3 = Button(
             self.frame1,
@@ -612,7 +618,7 @@ class Pycraft():
             #height=20,
             #width=20,
             command=self.password_window,
-            bootstyle="success-outline")
+            bootstyle="info-outline")
 
         if connected == True:
 
@@ -621,8 +627,8 @@ class Pycraft():
                 width = 200,
                 height = 60)
             self.rickroll.place(
-                x = 380, y = 420,
-                width = 249,
+                x = 1, y = 503,
+                width = 200,
                 height = 60)
             '''self.rick.place(
                 x = 380, y = 480,
@@ -636,7 +642,7 @@ class Pycraft():
             width = 150,
             height = 60)
             self.rickroll.place(
-                x = 380, y = 420,
+                x = 55, y = 558,
                 width = 249,
                 height = 60)
             '''self.rick.place(
@@ -701,18 +707,18 @@ class Pycraft():
 
         if connected == True:
 
-            self.l3.config(text=data["User-info"][0]["username"], font=self.custom_font3, foreground="white", background="#689BCA")
+            self.l3.config(text=data["User-info"][0]["username"], font=self.custom_font3, foreground="white", background="#384766")
 
             self.custom_font1 = Font(family="SF Pro Display", size=14)
 
             self.acc_method = data["User-info"][0]["AUTH_TYPE"]
 
             if self.acc_method == "Mojang Login":
-                self.l4.config(text="Mojang Account", font=self.custom_font1, foreground="white", background="#689BCA")
+                self.l4.config(text="Mojang Account", font=self.custom_font1, foreground="white", background="#384766")
             elif self.acc_method == "ElyBy Login":
-                self.l4.config(text="ElyBy Account", font=self.custom_font1, foreground="white", background="#689BCA")
+                self.l4.config(text="ElyBy Account", font=self.custom_font1, foreground="white", background="#384766")
             elif self.acc_method == "Offline Login":
-                self.l4.config(text="Offline Account", font=self.custom_font1, foreground="white", background="#689BCA")
+                self.l4.config(text="Offline Account", font=self.custom_font1, foreground="white", background="#384766")
 
         elif connected == False:
 
@@ -727,11 +733,11 @@ class Pycraft():
             self.l4.config(text="User is offline", font=self.custom_font1, foreground="white", background="#689BCA")
 
 
-        self.canvas.create_text(
+        '''self.canvas.create_text(
             55, 550,
             text = "v1.0",
             fill = "white",
-            font = ("SF Pro Display", int(16.0)))
+            font = ("SF Pro Display", int(16.0)))'''
 
         if not connected:
             showinfo(title="No internet access.",
@@ -762,6 +768,7 @@ class Pycraft():
 
 
         self.window_s = Frame(self.nb)
+        self.window_10 = Frame(self.nb)
 
         self.svmem = psutil.virtual_memory()
 
@@ -930,6 +937,7 @@ class Pycraft():
         self.s2 = ""
 
         self.window_t = Frame(self.nb)
+        self.window_11 = Frame(self.nb)
 
         self.canvas6 = Canvas(
             self.window_t,
@@ -940,14 +948,105 @@ class Pycraft():
             highlightthickness = 0,
             relief = "ridge")
         self.canvas6.place(x = 3, y = 0)
+        self.canvas10 = Canvas(
+            self.window_10,
+            bg = "#23272a",
+            height = 720,
+            width = 1024,
+            bd = 0,
+            highlightthickness = 0,
+            relief = "ridge")
+        self.canvas10.place(x = 3, y = 0)
+
+        self.canvas11 = Canvas(
+            self.window_11,
+            bg = "#23272a",
+            height = 720,
+            width = 1024,
+            bd = 0,
+            highlightthickness = 0,
+            relief = "ridge")
+        self.canvas11.place(x = 3, y = 0)
 
 
         self.background_img4 = PhotoImage(file = f"img/mc2.png")
         self.background4 = self.canvas6.create_image(
                 500.0, 280.0,
                 image=self.background_img4)
+        self.background10 = self.canvas10.create_image(
+                500.0, 280.0,
+                image=self.background_img4)
 
+        self.canvas10.create_text(
+            510.0, 55.0,
+            text = "Mods",
+            fill = "white",
+            font = ("SF Pro Display", int(20.0), "bold"))
+        
+        self.canvas10
 
+        self.background11 = self.canvas11.create_image(
+                500.0, 280.0,
+                image=self.background_img4)
+        self.canvas11.create_text(
+            510.0, 55.0,
+            text = "Help",
+            fill = "white",
+            font = ("SF Pro Display", int(20.0), "bold"))
+        self.canvas11.create_text(
+            500.0, 100.0,
+            text = "The documentation is available as this project's GitHub page.",
+            fill = "white",
+            font = ("SF Pro Display", int(12.0)))
+        self.canvas11.create_text(
+            510.0, 250.0,
+            text = "Credits",
+            fill = "white",
+            font = ("SF Pro Display", int(20.0), "bold"))
+        self.canvas11.create_text(
+            508.0, 290.0,
+            text = "shasankp000 for eClient",
+            fill = "white",
+            font = ("SF Pro Display", int(12.0)))
+        self.canvas11.create_text(
+            508.0, 320.0,
+            text = "v-pun215 for eClient (me)",
+            fill = "white",
+            font = ("SF Pro Display", int(12.0)))
+        self.canvas11.create_text(
+            510.0, 380.0,
+            text = "About",
+            fill = "white",
+            font = ("SF Pro Display", int(20.0), "bold"))
+        self.canvas11.create_text(
+            508.0, 420.0,
+            text = "Version 1.1",
+            fill = "white",
+            font = ("SF Pro Display", int(12.0)))
+        self.canvas11.create_text(
+            508.0, 450.0,
+            text = "© v-pun215 2023. No rights reserved.",
+            fill = "white",
+            font = ("SF Pro Display", int(12.0)))
+        
+
+        self.github = Button(
+            self.canvas11,
+            text="Documentation",
+            command=self.docs,
+            bootstyle="primary")
+
+        
+        self.b13.place(
+            x = 420, y = 420,
+            width = 180,
+            height = 40)
+        self.github.place(
+            x = 420, y = 120,
+            width = 180,
+            height = 40)
+
+        
 
         self.canvas6.create_text(
             220.0, 55.0,
@@ -1005,22 +1104,12 @@ class Pycraft():
         self.sn1.place(x=600, y=55.0)
 
 
-        self.b13 = Button(
-            self.canvas6,
-            text="Launch ModInstaller",
-            command=self.launch_modinstaller,
-            bootstyle="info-outline")
-
-
-        self.b13.place(
-            x = 120, y = 260,
-            width = 180,
-            height = 40)
-
         self.nb.add(self.frame1, text="Home")
         self.nb.add(self.p1, text="Installations")
         self.nb.add(self.window_s, text="Settings")
         self.nb.add(self.window_t, text="Additional Settings")
+        self.nb.add(self.window_11, text="Help")
+
 
         self.window.resizable(False, False)
         self.window.mainloop()
@@ -1043,7 +1132,7 @@ class Pycraft():
     '''def splash_screen(self):
         #Splash Screen for the launcher
         self.splash_s = style.master
-        self.splash_s.title("Pycraft Loader")
+        self.splash_s.title("eClient Loader")
         self.splash_s.geometry("761x403+140+50")
 
         self.Tk_Width = 761
@@ -1096,7 +1185,7 @@ class Pycraft():
 
         self.canva6.create_text(
             400, 200,
-            text = "PyCraft Launcher 1.04",
+            text = "eClient Launcher 1.04",
             fill = "cyan1",
             font = ("Galiver Sans", int(26.0)))
 
@@ -1324,7 +1413,7 @@ class Pycraft():
         webview.start()
 
     def changelog(self):
-        webview.create_window('Pycraft 1.04 Changelog', "https://github.com/shasankp000/PyCraft/blob/main/changelog.md")
+        webview.create_window('eClient 1.04 Changelog', "https://github.com/shasankp000/eClient/blob/main/changelog.md")
         webview.start()
 
     def skinview(self):
@@ -2311,7 +2400,7 @@ class Pycraft():
             60, 380,
             text = "Accounts",
             fill = "white",
-            font = ("Galiver Sans", int(16.0), "bold"))
+            font = ("SF Pro Display", int(16.0), "bold"))
 
         if connected == True:
 
@@ -2388,7 +2477,6 @@ class Pycraft():
         self.p3.resizable(False,False)
         self.canvas4 = Canvas(
             self.p3,
-            bg = "white",
             height = 200,
             width = 800,
             bd = 0,
@@ -2413,7 +2501,7 @@ class Pycraft():
         self.canvas4.create_text(
             80, 80,
             text = "Password: ",
-            fill = "black",
+            fill = "white",
             font = ("SF Pro Display", int(16.0), "bold"))
 
         self.entry1.place(
@@ -2498,7 +2586,7 @@ class Pycraft():
         self.l2.update()
         self.l2.place(x=580,y=570)
 
-        self.pb = Progressbar(self.pw, value=0, style='success.Horizontal.TProgressbar', length=500, mode="indeterminate")
+        self.pb = Progressbar(self.pw, value=0, bootstyle="success-striped", orient='horizontal', length=280, mode="determinate")
         self.pb.place(x=10, y=570)
 
         self.t1 = Thread(target=lambda: self.player.play())
@@ -2596,7 +2684,7 @@ class Pycraft():
         self.canvas7.create_text(
             80.0, 55.0,
             text = "Mod Name:",
-            fill = "#000000",
+            fill = "white",
             font = ("SF Pro Display", int(16.0), "bold"))
 
         self.entry3 = Entry(
@@ -2614,7 +2702,7 @@ class Pycraft():
         self.canvas7.create_text(
             165.0, 95.0,
             text = "Mod Loader(fabric/forge):",
-            fill = "#000000",
+            fill = "white",
             font = ("SF Pro Display", int(16.0), "bold"))
 
 
@@ -2633,7 +2721,7 @@ class Pycraft():
         self.canvas7.create_text(
             100.0, 135.0,
             text = "Game Version:",
-            fill = "#000000",
+            fill = "white",
             font = ("SF Pro Display", int(16.0), "bold"))
 
         self.entry5 = Entry(
@@ -2677,7 +2765,7 @@ if __name__ == "__main__":
     try:
         check_internet("https://www.google.com")
 
-        Pycraft()
+        eClient()
 
     except KeyboardInterrupt:
         print("Program Exited")

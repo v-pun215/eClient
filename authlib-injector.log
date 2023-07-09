@@ -1,0 +1,4 @@
+Logging started at 2023-07-09T07:18:05.533Z
+[authlib-injector] [INFO] Version: 1.1.39
+[authlib-injector] [INFO] Authentication server: https://ely.by
+[authlib-injector] [ERROR] Failed to fetch metadata: javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target

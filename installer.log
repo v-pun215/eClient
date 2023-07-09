@@ -1,0 +1,78 @@
+JVM info: Oracle Corporation - 11.0.19 - 11.0.19+9-LTS-224
+java.net.preferIPv4Stack=true
+Found java version 11.0.19
+Extracting json
+Considering minecraft client jar
+  Downloading library from https://piston-data.mojang.com/v1/objects/0f275bc1547d01fa5f56ba34bdc87d981ee12daf/client.jar
+    Download completed: Checksum validated.
+Downloading libraries
+Found 1 additional library directories
+Considering library net.minecraftforge:forge:1.12.2-14.23.5.2860
+  Extracting library from /maven/net/minecraftforge/forge/1.12.2-14.23.5.2860/forge-1.12.2-14.23.5.2860.jar
+    Extraction completed: Checksum validated.
+Considering library org.ow2.asm:asm-debug-all:5.2
+  Downloading library from https://maven.minecraftforge.net/org/ow2/asm/asm-debug-all/5.2/asm-debug-all-5.2.jar
+    Download completed: Checksum validated.
+Considering library net.minecraft:launchwrapper:1.12
+  Downloading library from https://libraries.minecraft.net/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.jar
+    Download completed: Checksum validated.
+Considering library org.jline:jline:3.5.1
+  Downloading library from https://maven.minecraftforge.net/org/jline/jline/3.5.1/jline-3.5.1.jar
+    Download completed: Checksum validated.
+Considering library com.typesafe.akka:akka-actor_2.11:2.3.3
+  Downloading library from https://maven.minecraftforge.net/com/typesafe/akka/akka-actor_2.11/2.3.3/akka-actor_2.11-2.3.3.jar
+    Download completed: Checksum validated.
+Considering library com.typesafe:config:1.2.1
+  Downloading library from https://maven.minecraftforge.net/com/typesafe/config/1.2.1/config-1.2.1.jar
+    Download completed: Checksum validated.
+Considering library org.scala-lang:scala-actors-migration_2.11:1.1.0
+  Downloading library from https://maven.minecraftforge.net/org/scala-lang/scala-actors-migration_2.11/1.1.0/scala-actors-migration_2.11-1.1.0.jar
+    Download completed: Checksum validated.
+Considering library org.scala-lang:scala-compiler:2.11.1
+  Downloading library from https://maven.minecraftforge.net/org/scala-lang/scala-compiler/2.11.1/scala-compiler-2.11.1.jar
+    Download completed: Checksum validated.
+Considering library org.scala-lang.plugins:scala-continuations-library_2.11:1.0.2_mc
+  Downloading library from https://maven.minecraftforge.net/org/scala-lang/plugins/scala-continuations-library_2.11/1.0.2_mc/scala-continuations-library_2.11-1.0.2_mc.jar
+    Download completed: Checksum validated.
+Considering library org.scala-lang.plugins:scala-continuations-plugin_2.11.1:1.0.2_mc
+  Downloading library from https://maven.minecraftforge.net/org/scala-lang/plugins/scala-continuations-plugin_2.11.1/1.0.2_mc/scala-continuations-plugin_2.11.1-1.0.2_mc.jar
+    Download completed: Checksum validated.
+Considering library org.scala-lang:scala-library:2.11.1
+  Downloading library from https://maven.minecraftforge.net/org/scala-lang/scala-library/2.11.1/scala-library-2.11.1.jar
+    Download completed: Checksum validated.
+Considering library org.scala-lang:scala-parser-combinators_2.11:1.0.1
+  Downloading library from https://maven.minecraftforge.net/org/scala-lang/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.jar
+    Download completed: Checksum validated.
+Considering library org.scala-lang:scala-reflect:2.11.1
+  Downloading library from https://maven.minecraftforge.net/org/scala-lang/scala-reflect/2.11.1/scala-reflect-2.11.1.jar
+    Download completed: Checksum validated.
+Considering library org.scala-lang:scala-swing_2.11:1.0.1
+  Downloading library from https://maven.minecraftforge.net/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.jar
+    Download completed: Checksum validated.
+Considering library org.scala-lang:scala-xml_2.11:1.0.2
+  Downloading library from https://maven.minecraftforge.net/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar
+    Download completed: Checksum validated.
+Considering library lzma:lzma:0.0.1
+  Downloading library from https://libraries.minecraft.net/lzma/lzma/0.0.1/lzma-0.0.1.jar
+    Download completed: Checksum validated.
+Considering library java3d:vecmath:1.5.2
+  Downloading library from https://libraries.minecraft.net/java3d/vecmath/1.5.2/vecmath-1.5.2.jar
+    Download completed: Checksum validated.
+Considering library net.sf.trove4j:trove4j:3.0.3
+  Downloading library from https://libraries.minecraft.net/net/sf/trove4j/trove4j/3.0.3/trove4j-3.0.3.jar
+    Download completed: Checksum validated.
+Considering library org.apache.maven:maven-artifact:3.5.3
+  Downloading library from https://maven.minecraftforge.net/org/apache/maven/maven-artifact/3.5.3/maven-artifact-3.5.3.jar
+    Download completed: Checksum validated.
+Considering library net.sf.jopt-simple:jopt-simple:5.0.3
+  Downloading library from https://libraries.minecraft.net/net/sf/jopt-simple/jopt-simple/5.0.3/jopt-simple-5.0.3.jar
+    Download completed: Checksum validated.
+Considering library org.apache.logging.log4j:log4j-api:2.15.0
+  Downloading library from https://maven.minecraftforge.net/org/apache/logging/log4j/log4j-api/2.15.0/log4j-api-2.15.0.jar
+    Download completed: Checksum validated.
+Considering library org.apache.logging.log4j:log4j-core:2.15.0
+  Downloading library from https://maven.minecraftforge.net/org/apache/logging/log4j/log4j-core/2.15.0/log4j-core-2.15.0.jar
+    Download completed: Checksum validated.
+Building Processors
+Injecting profile
+Finished!

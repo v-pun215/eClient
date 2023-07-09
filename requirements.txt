@@ -11,3 +11,4 @@ speedtest-cli
 psutil
 pywebview
 customtkinter
+

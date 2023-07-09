@@ -1,6 +1,7 @@
 import speedtest
 
 
+
 class SpeedTracker():
     '''A net speed tracker based on the speedtest-cli module'''
     def __init__(self):
