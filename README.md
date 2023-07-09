@@ -20,7 +20,7 @@ This launcher's main goal is not to pirate the game, it's simply to port the lau
 ## Known Bugs -
 When launching Minecraft 1.20, Minecraft loads in with 'Failed to Quick Play'. Trying to fix this issue.
 
-Not able to login to Mojang accounts anymore (Mojang disabled the API)
+Not able to login to Mojang accounts anymore (Mojang disabled the API).
 
 Forge can't install and run properly.
 ## Features
@@ -33,24 +33,37 @@ Supports Fabric.
 Ability to login with M̶o̶j̶a̶n̶g̶, Ely.by and Offline Accounts.
 
 Never gives you up.
-## Screenshots (Outdated)
+## Screenshots
 eClient Updater
-![image](https://github.com/v-pun215/eClient/assets/67716965/6d4b8301-49fd-4da8-8593-3e507e421348)
+![image](https://github.com/v-pun215/eClient/assets/67716965/1832df19-6d37-40fe-a5d5-140efd597e55)
+
+
+
 
 eClient (Home)
-![image](https://github.com/v-pun215/eClient/assets/67716965/79fa0d13-949f-43eb-bac5-44f84b25a509)
+![mc1](https://github.com/v-pun215/eClient/assets/67716965/419a3ab7-707a-4128-85c0-d5109310fd90)
+
 
 eClient (Installations tab)
-![image](https://github.com/v-pun215/eClient/assets/67716965/293b5a0d-f96a-432d-b5bb-4e55f38f2804)
+![mc2](https://github.com/v-pun215/eClient/assets/67716965/b4d67b51-2d98-4a8c-b163-4fbffcccaf4c)
+
 
 eClient (Settings tab)
-![image](https://github.com/v-pun215/eClient/assets/67716965/dd0e274c-2d6a-49e0-8a23-b6a22dcd15b7)
+![mc3](https://github.com/v-pun215/eClient/assets/67716965/87d7c3c5-49d6-4faa-a02f-616928aa070b)
+
 
 eClient (Additional Settings tab)
-![image](https://github.com/v-pun215/eClient/assets/67716965/5c2e44b1-ce4a-4e51-9918-3cd875ca5b2a)
+![mc4](https://github.com/v-pun215/eClient/assets/67716965/70d93c6e-4e0c-4b1d-a318-3969f038ea99)
+
+
+eClient (Help tab)
+![mc5](https://github.com/v-pun215/eClient/assets/67716965/d465202f-eba3-4a40-971b-5f22f4ec4f0b)
 
 eClient (Mod Installer)
-![image](https://github.com/v-pun215/eClient/assets/67716965/40972195-edcb-46c6-bde0-da05384c97ec)
+![mc6](https://github.com/v-pun215/eClient/assets/67716965/6d147b3c-e1c5-4aca-85b0-ba73a3e35cc7)
+
+eClient (Accounts Window)
+![mc7](https://github.com/v-pun215/eClient/assets/67716965/9acf0115-33fa-402e-8fbe-3bfcce503705)
 
 ## Installation
 > Download and run setup.exe from GitHub Releases.
@@ -59,6 +72,5 @@ eClient (Mod Installer)
 
 > Run eclient.pyw to launch. 
 
-> Note: On some computers, after installing and running eclient.pyw for the first time, the launcher crashes.
-> Run the launcher again to fix this problem.
+> You could create a shortcut to eclient.pyw if you want.
     
