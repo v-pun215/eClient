@@ -62,7 +62,8 @@ eClient (Additional Settings tab)
 
 
 eClient (Help tab)
-![mc5](https://github.com/v-pun215/eClient/assets/67716965/d465202f-eba3-4a40-971b-5f22f4ec4f0b)
+![image](https://github.com/v-pun215/eClient/assets/67716965/fdc1d5fa-1510-441a-802a-bff86b3f53e2)
+
 
 eClient (Mod Installer)
 ![mc6](https://github.com/v-pun215/eClient/assets/67716965/6d147b3c-e1c5-4aca-85b0-ba73a3e35cc7)
