@@ -4,9 +4,9 @@
 
 A Minecraft Launcher written in Python.
 
-Based on PyCraft by shasankp000.
+Download Installer: https://github.com/v-pun215/eClient/releases/latest/download/install.exe
 
-Copyright (c) 2023, shasankp000.
+Based on PyCraft by shasankp000.
 
 See his work: https://github.com/shasankp000/PyCraft
 
@@ -71,11 +71,5 @@ eClient (Accounts Window)
 ![mc7](https://github.com/v-pun215/eClient/assets/67716965/9acf0115-33fa-402e-8fbe-3bfcce503705)
 
 ## Installation
-> Download and run setup.exe from GitHub Releases.
-
-> Alternatively, download the source code and run installer.py (requires Python 3.10 preinstalled)
-
-> Run eclient.pyw to launch. 
-
-> You could create a shortcut to eclient.pyw if you want.
+Check releases tab.
     
