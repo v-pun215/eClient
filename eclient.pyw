@@ -1,4 +1,6 @@
 import json 
+from tkinter import *
+from tkinter import ttk
 from ttkbootstrap import Style
 from tkinter.ttk import Progressbar
 from tkinter.messagebox import askquestion, showinfo
@@ -18,9 +20,9 @@ import ctypes
 windll.shcore.SetProcessDpiAwareness(1)
 myappid = u'vpun215.eclient.idk.1.0' # arbitrary string
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
-
+first=False
 currn_dir = os.getcwd()
-mc_dir = r"{}/.minecraft".format(currn_dir)
+mc_dir = r"{}\.minecraft".format(currn_dir)
 os_name = platform.platform()
 
 def get_size(bytes, suffix="B"):
@@ -117,6 +119,7 @@ if not os.path.exists(r"{}/settings.json".format(currn_dir)):
     with open("settings.json", "w") as js_set:
         json.dump(settings, js_set, indent=4)
         js_set.close()
+    first = True
 else:
     pass
 
@@ -191,6 +194,7 @@ if not os.path.exists(r"{}/settings.json".format(currn_dir)):
             font = ("SF Pro Display", int(13.0)),
             bg="#3a3a3a",
             fg="cyan1")
+    first=True
 
 else:
     c1 = Label(
@@ -200,6 +204,17 @@ else:
             fg="cyan1")
 
 c1.place(x=248, y=350)
+def open_popup():
+   top= Toplevel(root)
+   top.geometry("450x250")
+   top.title("Welcome to eClient!")
+   Label(top, text= "Welcome to eClient!", font=("SF Pro Display", 25,'bold')).place(x=25,y=20)
+   Label(top, text= "If you have any issues, fell free to report them at the ", font=("SF Pro Display", 11)).place(x=10,y=90)
+   Label(top, text= "GitHub.", font=("SF Pro Display", 11)).place(x=10,y=110)
+   #root.after(10000)
+if first == True:
+    open_popup()
+
 
 root.after(10000, lambda: c1.configure(text="Getting everything ready...."))
 

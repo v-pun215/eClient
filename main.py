@@ -1020,7 +1020,7 @@ class eClient():
             font = ("SF Pro Display", int(20.0), "bold"))
         self.canvas11.create_text(
             508.0, 420.0,
-            text = "Version 1.1",
+            text = "Version 1.2",
             fill = "white",
             font = ("SF Pro Display", int(12.0)))
         self.canvas11.create_text(
@@ -2471,7 +2471,7 @@ class eClient():
     def password_window(self):
         self.p3 = tk.Toplevel()
         self.p3.title("Enter Password")
-        self.p3.geometry("630x300")
+        self.p3.geometry("630x200")
 
         self.p3.configure(bg="white")
         self.p3.resizable(False,False)
