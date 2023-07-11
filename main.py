@@ -1,6 +1,8 @@
 from tkinter import Canvas, PhotoImage, Entry, Tk, StringVar, DoubleVar
 from tkinter import Button as Button1
 from tkinter import Label as Label1
+from tkinter import *
+from tkinter import ttk
 from tkinter.font import Font
 import tkinter as tk
 from tkinter.ttk import Combobox, Progressbar, Frame, Label, Radiobutton, Notebook, Checkbutton, Scale, Button
@@ -36,6 +38,24 @@ import webbrowser
 windll.shcore.SetProcessDpiAwareness(1)
 myappid = u'vpun215.eclient.idk.1.0' # arbitrary string
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+first=False
+theman = ""
+'''with open('light.txt') as f:
+    content = f.read()
+    if content == '0':
+        theman = "darkly"
+    else:
+        theman = "flatly"
+with open('val.txt') as f:
+    content = f.read()
+    if content == '':
+        content=0
+        theman="darkly"
+        showerror(title="Error", message="Unknown error has occured.")
+    else:
+        theman = "flatly"'''
+
+
 print("")
 print('''
            $$$$$$\  $$\ $$\                      $$\     
@@ -55,6 +75,7 @@ print("Copyright © v-pun215.")
 print("")
 print("Starting eClient....")
 #time.sleep(5)
+never = "darkly"
 
 
 
@@ -308,6 +329,42 @@ class eClient():
     print("")
     def docs(self):
         webbrowser.open('https://github.com/v-pun215/eClient')
+    '''def open_popup():
+        top= Toplevel(self)
+        top.geometry("800x550")
+        top.title("Welcome to eClient!")
+        Label(top, text= "Welcome to eClient!", font=("SF Pro Display", 25,'bold')).place(x=25,y=20)
+        Label(top, text= "If you have any issues, fell free to report them at eClient's ", font=("SF Pro Display", 11)).place(x=10,y=90)
+        Label(top, text= "GitHub.", font=("SF Pro Display", 11)).place(x=10,y=110)
+        Label(top, text= "Enter Minecraft Directory:", font=("SF Pro Display", 20, 'bold')).place(x=10,y=110)
+        self.hulk = Entry(
+            top,
+            bd = 0,
+            bg = "#c4c4c4",
+            font = ("SF Pro Display", 20),
+            highlightthickness = 0)
+
+        self.hulk.insert(0, f"{mc_home}")
+
+        self.googoo = root.hulk.get()
+
+        self.hulk.place(
+            x = 10.0, y = 147.0,
+            width = 547.0,
+            height = 62)
+
+        self.saveboi = Button(
+            top,
+            text="Save",
+            command = root.save,
+            bootstyle="success-outline")
+
+        self.saveboi.place(
+            x = 790, y = 147,
+            width = 119,
+            height = 60)'''
+
+
 
     global data
 
@@ -421,11 +478,7 @@ class eClient():
         )
 
 
-        self.canvas2.create_text(
-                100, 50.0,
-                text = "Run Options",
-                fill = "white",
-                font = ("SF Pro Display", int(16.0), "bold"))
+        
 
 
 
@@ -446,8 +499,8 @@ class eClient():
             self.canvas2.create_text(
                 400, 50.0,
                 text = "Available Offline",
-                fill = "#000000",
-                font = ("SF Pro Display", int(16.0)))
+                fill = "white",
+                font = ("SF Pro Display", int(16.0), 'bold'))
 
             try:
                 self.offversionsList = Combobox(self.p1, width=15)
@@ -460,6 +513,11 @@ class eClient():
 
 
         else:
+            self.canvas2.create_text(
+                100, 50.0,
+                text = "Run Options",
+                fill = "white",
+                font = ("SF Pro Display", int(16.0), "bold"))
 
             self.vanilla_version_list = minecraft_launcher_lib.utils.get_available_versions(mc_dir)
 
@@ -638,12 +696,12 @@ class eClient():
 
         elif connected == False:
             self.b3.place(
-            x = 870, y = 503,
-            width = 150,
-            height = 60)
+                x = 820, y = 503,
+                width = 200,
+                height = 60)
             self.rickroll.place(
-                x = 55, y = 558,
-                width = 249,
+                x = 1, y = 503,
+                width = 200,
                 height = 60)
             '''self.rick.place(
                 x = 380, y = 480,
@@ -740,8 +798,8 @@ class eClient():
             font = ("SF Pro Display", int(16.0)))'''
 
         if not connected:
-            showinfo(title="No internet access.",
-                     message="You are offline!\n You won't have access to the following features: \n Skins System \n Downloads \n Ely.by accounts.")
+            showerror(title="No internet access.",
+                     message="You are offline!\n You won't have access to the following features: \n Skins System \n Downloads \n Ely.by accounts \n The game can crash")
 
 
 
@@ -750,6 +808,7 @@ class eClient():
 
         #global variables
         self.cb1 = ""
+
         self.cb2 = ""
         self.s1 = ""
 
@@ -1020,7 +1079,7 @@ class eClient():
             font = ("SF Pro Display", int(20.0), "bold"))
         self.canvas11.create_text(
             508.0, 420.0,
-            text = "Version 1.2",
+            text = "Version 1.3",
             fill = "white",
             font = ("SF Pro Display", int(12.0)))
         self.canvas11.create_text(
@@ -1068,6 +1127,11 @@ class eClient():
             bg = "#c4c4c4",
             font = ("SF Pro Display", 20),
             highlightthickness = 0)
+        self.canvas6.create_text(
+            220.0, 300.0,
+            text = "Dark Mode",
+            fill = "white",
+            font = ("SF Pro Display", int(20.0), "bold"))
 
 
         self.login_method = auth_type
@@ -1100,9 +1164,17 @@ class eClient():
             self.cb1 = StringVar(value="deselected")
 
 
-        self.sn1 = Checkbutton(self.window_t, bootstyle="success-square-toggle", onvalue="selected", offvalue="deselected", command=self.check2, variable=self.cb1)
+        self.sn1 = Checkbutton(self.window_t, bootstyle="success-round-toggle", onvalue="selected", offvalue="deselected", command=self.check2, variable=self.cb1)
         self.sn1.place(x=600, y=55.0)
-
+        with open('val.txt') as dam:
+            content = dam.read()
+        #global val
+        #val = content
+        #nah = IntVar(value=val)
+        #self.dm = Checkbutton(self.window_t, bootstyle="success-round-toggle", command=self.toggle_dm, variable=nah)
+        #global isit
+        #isit = nah.get()
+        #self.dm.place(x=600, y=290.0)
 
         self.nb.add(self.frame1, text="Home")
         self.nb.add(self.p1, text="Installations")
@@ -1111,8 +1183,62 @@ class eClient():
         self.nb.add(self.window_11, text="Help")
 
 
+        
+
+
         self.window.resizable(False, False)
         self.window.mainloop()
+        '''with open('ninst.txt') as f:
+            content = f.read()
+            if content == '0':
+                first= True
+                open_popup()
+                f = open("ninst.txt", "w")
+                f.write("1")
+                f.close()
+            else:
+                pass'''
+    def restart(self):
+        os.system("taskkill /f /im python.exe")
+        os.system("python main.py")
+        
+    '''def toggle_dm(self):
+        global dark
+        global style
+        if self.dm.get() == "selected":
+            dark = False
+            print("selected")
+        elif self.dm.get() == "deselected":
+            dark = True
+            print("deselected")
+        if dark == True:
+            never = "darkly"
+            style = Style(theme=never)
+            print("darkly")
+        elif dark == False:
+            never = "flatly"
+            style = Style(theme=never)
+            print("flatly")
+        if isit == 0:
+            print("selected")
+            f = open("light.txt", "w")
+            f.write("1")
+            f3 = open("val.txt", "w")
+            f3.write("1")
+            print("Relaunching...")
+            f.close()
+            self.restart()
+        if isit == 1:
+            print("deselected")
+            f = open("light.txt", "w")
+            f.write("0")
+            print("Relaunching...")
+            f2 = open("val.txt", "w")
+            f2.write("0")
+            f.close()
+            self.restart()'''
+
+    
 
 
     def generate_cracked_uid(self):
@@ -1280,11 +1406,11 @@ class eClient():
     def check3(self):
         global tor_enabled
         global tor_enabled_selected
-        if cb2.get() == "selected":
+        if self.cb2.get() == "selected":
             tor_enabled = True
             tor_enabled_selected = True
 
-        elif cb2.get() == "deselected":
+        elif self.cb2.get() == "deselected":
             tor_enabled = False
             tor_enabled_selected = False
 

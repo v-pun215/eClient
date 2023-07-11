@@ -16,13 +16,17 @@ import psutil
 import platform
 import base64
 from ctypes import windll
-import ctypes
+import ctypes, getpass
 windll.shcore.SetProcessDpiAwareness(1)
 myappid = u'vpun215.eclient.idk.1.0' # arbitrary string
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 first=False
 currn_dir = os.getcwd()
-mc_dir = r"{}\.minecraft".format(currn_dir)
+usr_accnt = getpass.getuser()
+if os.path.exists("C:\\users\\{}\\AppData\\Roaming\\.minecraft"):
+    mc_dir = r"C:\\users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)
+else:
+    mc_dir = r"{}\.minecraft".format(currn_dir)
 os_name = platform.platform()
 
 def get_size(bytes, suffix="B"):
@@ -204,16 +208,52 @@ else:
             fg="cyan1")
 
 c1.place(x=248, y=350)
+def save(root):
+        '''Saves the minecraft home dir path, which is entered.'''
+        global mc_home
+        mc_home = root.entry0.get()
+        data["Minecraft-home"] = mc_home
+
+        with open("settings.json", "w") as js_set:
+            json.dump(data, js_set, indent=4)
+            js_set.close()
 def open_popup():
-   top= Toplevel(root)
-   top.geometry("450x250")
-   top.title("Welcome to eClient!")
-   Label(top, text= "Welcome to eClient!", font=("SF Pro Display", 25,'bold')).place(x=25,y=20)
-   Label(top, text= "If you have any issues, fell free to report them at the ", font=("SF Pro Display", 11)).place(x=10,y=90)
-   Label(top, text= "GitHub.", font=("SF Pro Display", 11)).place(x=10,y=110)
+    top= Toplevel(root)
+    top.geometry("800x550")
+    top.title("Welcome to eClient!")
+    Label(top, text= "Welcome to eClient!", font=("SF Pro Display", 25,'bold')).place(x=25,y=20)
+    Label(top, text= "If you have any issues, fell free to report them at eClient's ", font=("SF Pro Display", 11)).place(x=10,y=90)
+    Label(top, text= "GitHub.", font=("SF Pro Display", 11)).place(x=10,y=110)
+    Label(top, text= "Enter Minecraft Directory:", font=("SF Pro Display", 20, 'bold')).place(x=10,y=110)
+    root.entry0 = Entry(
+        root.window_s,
+        bd = 0,
+        bg = "#c4c4c4",
+        font = ("SF Pro Display", 20),
+        highlightthickness = 0)
+
+    root.entry0.insert(0, f"{mc_home}")
+
+    root.curn_path = root.entry0.get()
+
+    root.entry0.place(
+        x = 10.0, y = 147.0,
+        width = 547.0,
+        height = 62)
+
+    root.b7 = Button(
+        root.canvas5,
+        text="Save",
+        command = root.save,
+        bootstyle="success-outline")
+
+    root.b7.place(
+        x = 790, y = 147,
+        width = 119,
+        height = 60)
    #root.after(10000)
-if first == True:
-    open_popup()
+'''if first == True:
+    open_popup()'''
 
 
 root.after(10000, lambda: c1.configure(text="Getting everything ready...."))

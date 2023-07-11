@@ -41,11 +41,16 @@ def end():
         shutil.move('command.py', 'C:\\Users\\{}\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\minecraft_launcher_lib\\'.format(usr_accnt))
         print("eClient installed.")
         print("Creating shortcut...")
-        wget.download("https://eclient-libs.earthsoft.me/shortcut.exe", bar=wget.bar_adaptive)
-        shutil.move('shortcut.exe', 'C:\\Windows\\System32'.format(usr_accnt))
-        google = "C:\\Users\\{}\\AppData\\Roaming\\eClient".format(usr_accnt)
-        os.chdir(r"C:\\Users\\{}\\Desktop\\ ".format(usr_accnt))
-        os.system(f"shortcut.exe /F:eClient.lnk /A:C /T:{google}\\eclient.pyw /W:{google} /I:{google}\\mc.ico")
+        damn = "C:\\Windows\\System32\\shortcut.exe"
+        isExist = os.path.exists(damn)
+        if isExist == True:
+            os.system(f"shortcut.exe /F:eClient.lnk /A:C /T:{google}\\eclient.pyw /W:{google} /I:{google}\\mc.ico")
+        elif isExist == False:
+            wget.download("https://eclient-libs.earthsoft.me/shortcut.exe", bar=wget.bar_adaptive)
+            shutil.move('shortcut.exe', 'C:\\Windows\\System32'.format(usr_accnt))
+            google = "C:\\Users\\{}\\AppData\\Roaming\\eClient".format(usr_accnt)
+            os.chdir(r"C:\\Users\\{}\\Desktop\\ ".format(usr_accnt))
+            os.system(f"shortcut.exe /F:eClient.lnk /A:C /T:{google}\\eclient.pyw /W:{google} /I:{google}\\mc.ico")
     elif not dire == "":
         print("Installing eClient to {}...".format(dire))
         os.chdir(dire)
