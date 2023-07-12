@@ -10,7 +10,15 @@ Based on PyCraft by shasankp000.
 
 See his work: https://github.com/shasankp000/PyCraft
 
-## NEW LOGO!
+## Important: About the installer.
+The install.exe downloads all libraries from https://libs-pi.vercel.app/eclient.zip.
+
+All install.exe do this (even setup.exe) 
+
+So, if you want a older version of eClient, download source code from releases.
+
+
+## Logo:
 ![icon](https://github.com/v-pun215/eClient/assets/67716965/ca4560eb-dc12-41ef-9b45-0ede2d32ffca)
 
 
