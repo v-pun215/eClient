@@ -18,7 +18,7 @@ if os.path.exists("\\.minecraft"):
     shutil.move('\\.minecraft', 'bkp')
 else:
     pass
-wget.download("https://eclient-libs.earthsoft.me/eclient.zip", bar=wget.bar_adaptive)
+wget.download("https://libs-pi.vercel.app/eclient.zip", bar=wget.bar_adaptive)
 os.remove('yeah.cmd')
 os.remove('val.txt')
 os.remove('speedtracker.py')
@@ -51,7 +51,7 @@ shutil.rmtree(path3)
 shutil.rmtree(path4)
 
 print("Extracting eClient...")
-filename3 = wget.detect_filename("https://eclient-libs.earthsoft.me/eclient.zip")
+filename3 = wget.detect_filename("https://libs-pi.vercel.app/eclient.zip")
 os.system('powershell -Command "Expand-Archive -LiteralPath eclient.zip -DestinationPath Update"')
 path6 = Path("Update")
 
