@@ -2,13 +2,14 @@ import json
 from tkinter import *
 from tkinter import ttk
 from ttkbootstrap import Style
+from ttkbootstrap import *
 from tkinter.ttk import Progressbar
 from tkinter.messagebox import askquestion, showinfo
 from tkinter import Label, Canvas, PhotoImage
 import tkinter as tk
 import sys
 import os
-import time
+import time, requests
 from threading import Thread
 from tkvideo import tkvideo
 import platform
@@ -28,7 +29,17 @@ if os.path.exists("C:\\users\\{}\\AppData\\Roaming\\.minecraft"):
 else:
     mc_dir = r"{}\.minecraft".format(currn_dir)
 os_name = platform.platform()
-
+def update():
+    os.system("python update.py")
+    sys.exit(0)
+    
+def con():
+    pass
+    top.destroy()
+response = requests.get("https://api.github.com/repos/v-pun215/eClient/releases/latest")
+lv = response.json()["name"]
+if not lv == "v1.4":
+    print("Update available!")
 def get_size(bytes, suffix="B"):
     #Found this on some website, i don't remember now. Used to get the total ram in GB.
     """ 
@@ -146,7 +157,7 @@ tor_enabled_selected = data["setting-info"][0]["tor_enabled_selected"]
 ramlimiterExceptionBypassed = data["ramlimiterExceptionBypassed"]
 ramlimiterExceptionBypassedSelected = data["ramlimiterExceptionBypassedSelected"]
 
-style = Style()
+style = Style(theme="flatly")
 
 
 root = style.master
@@ -189,7 +200,15 @@ background = canvas.create_image(
     image=background_img)
 
 
-
+if not lv == "1.4":
+    print("Update available!")
+    top= Toplevel(root)
+    top.geometry("450x200")
+    top.title("Update Available: {}".format(lv))
+    Label(top, text= "Update Available", font=("SF Pro Display", 25,'bold')).place(x=60,y=20)
+    Label(top, text= "Version {} is available. Would you like to download it?".format(lv), font=("SF Pro Display", 11)).place(x=10,y=90)
+    Button(top,text = "Yes", bootstyle="success-outline", command=update).place(x=150, y=140)  
+    Button(top,text = "No", bootstyle="danger-outline", command=con).place(x=250, y=140)  
 
 
 if not os.path.exists(r"{}/settings.json".format(currn_dir)):

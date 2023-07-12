@@ -2,6 +2,7 @@ from tkinter import Canvas, PhotoImage, Entry, Tk, StringVar, DoubleVar
 from tkinter import Button as Button1
 from tkinter import Label as Label1
 from tkinter import *
+import getpass
 from tkinter import ttk
 from tkinter.font import Font
 import tkinter as tk
@@ -39,6 +40,8 @@ windll.shcore.SetProcessDpiAwareness(1)
 myappid = u'vpun215.eclient.idk.1.0' # arbitrary string
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 first=False
+global usr_accnt
+usr_accnt = getpass.getuser()
 theman = ""
 '''with open('light.txt') as f:
     content = f.read()
@@ -70,7 +73,7 @@ $$   ____|$$ |  $$\ $$ |$$ |$$   ____|$$ |  $$ | $$ |$$\
                                                          
                                                          
 ''')
-print("Based on eClient. Changed a LOT of code and fixed a LOT of bugs\n to make this compatible with Python 3.10.")
+print("Based on PyCraft.")
 print("Copyright © v-pun215.")
 print("")
 print("Starting eClient....")
@@ -86,7 +89,10 @@ style.configure("TNotebook.Tab", foreground="#15d38f", background="#4d4d4d", bor
 #style.theme_create("custom.TNotebook", foreground="#15d38f", background="#23272a", bordercolor="#072A6C")
 
 currn_dir = os.getcwd()
-mc_dir = r"{}\.minecraft".format(currn_dir)
+if os.path.exists(r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)):
+    mc_dir = r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)
+else:
+    mc_dir = r"{}\.minecraft".format(currn_dir)
 OS = platform.platform()
 
 
@@ -265,12 +271,12 @@ def reload_data():
 
 
 
-print("Your OS is {}. Nice one!".format(OS))
+#print("Your OS is {}. Nice one!".format(OS))
 
 
 
 
-if os.path.exists(r"{}\.minecraft".format(currn_dir)):
+if os.path.exists(r"{}\.minecraft".format(currn_dir)) or os.path.exists(r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)):
     print("Existing minecraft installation, checking for versions...")
 
 else:
@@ -319,14 +325,14 @@ class eClient():
     global auth_type
     global jvm_args
 
-    print("")
+    '''print("")
     print('------EXTREMELY IMPORTANT------')
     print("")
     print("After the Installation of any MC Version is complete, press stop download. ")
     print("I am still trying to fix this problem.")
     print("")
     print("-------------------------------")
-    print("")
+    print("")'''
     def docs(self):
         webbrowser.open('https://github.com/v-pun215/eClient')
     '''def open_popup():
@@ -802,8 +808,12 @@ class eClient():
                      message="You are offline!\n You won't have access to the following features: \n Skins System \n Downloads \n Ely.by accounts \n The game can crash")
 
 
-
-        self.mc_dir = r"{}/.minecraft".format(currn_dir)
+        
+        if os.path.exists(r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)):
+            self.mc_dir = r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)
+        else:
+            self.mc_dir = r"{}/.minecraft".format(currn_dir)
+        
 
 
         #global variables
@@ -1032,6 +1042,7 @@ class eClient():
         self.background4 = self.canvas6.create_image(
                 500.0, 280.0,
                 image=self.background_img4)
+        
         self.background10 = self.canvas10.create_image(
                 500.0, 280.0,
                 image=self.background_img4)
@@ -1041,6 +1052,7 @@ class eClient():
             text = "Mods",
             fill = "white",
             font = ("SF Pro Display", int(20.0), "bold"))
+        
         
         self.canvas10
 
@@ -1079,7 +1091,7 @@ class eClient():
             font = ("SF Pro Display", int(20.0), "bold"))
         self.canvas11.create_text(
             508.0, 420.0,
-            text = "Version 1.3",
+            text = "Version 1.4",
             fill = "white",
             font = ("SF Pro Display", int(12.0)))
         self.canvas11.create_text(
@@ -1127,11 +1139,11 @@ class eClient():
             bg = "#c4c4c4",
             font = ("SF Pro Display", 20),
             highlightthickness = 0)
-        self.canvas6.create_text(
+        '''self.canvas6.create_text(
             220.0, 300.0,
             text = "Dark Mode",
             fill = "white",
-            font = ("SF Pro Display", int(20.0), "bold"))
+            font = ("SF Pro Display", int(20.0), "bold"))'''
 
 
         self.login_method = auth_type
@@ -1180,6 +1192,7 @@ class eClient():
         self.nb.add(self.p1, text="Installations")
         self.nb.add(self.window_s, text="Settings")
         self.nb.add(self.window_t, text="Additional Settings")
+        #self.nb.add(self.window_10, text="Mods")
         self.nb.add(self.window_11, text="Help")
 
 
@@ -1728,7 +1741,7 @@ class eClient():
 
 
                     try:
-                        self.j2 = [r"-javaagent:{}/authlib/".format(currn_dir) + "" + f"authlib-injector-1.1.39.jar=ely.by", f"-Xmx{int(self.ram_mb)}M", "-Xms128M"]
+                        self.j2 = [r"-javaagent:{}/authlib/".format(currn_dir) + "" + f"authlib-injector-1.2.3.jar=ely.by", f"-Xmx{int(self.ram_mb)}M", "-Xms128M"]
 
 
                         data["User-info"][0]["username"] = self.usr
@@ -1897,7 +1910,7 @@ class eClient():
 
                     try:
 
-                        self.j2 = [r"-javaagent:{}/authlib/".format(currn_dir) + "" + f"authlib-injector-1.1.39.jar=ely.by", f"-Xmx{int(self.ram_mb)}M", "-Xms128M"]
+                        self.j2 = [r"-javaagent:{}/authlib/".format(currn_dir) + "" + f"authlib-injector-1.2.3.jar=ely.by", f"-Xmx{int(self.ram_mb)}M", "-Xms128M"]
 
 
                         data["User-info"][0]["username"] = self.usr
@@ -2078,7 +2091,7 @@ class eClient():
 
                     try:
 
-                        self.j2 = [r"-javaagent:{}/authlib/".format(currn_dir) + "" + f"authlib-injector-1.1.39.jar=ely.by", f"-Xmx{int(self.ram_mb)}M", "-Xms128M"]
+                        self.j2 = [r"-javaagent:{}/authlib/".format(currn_dir) + "" + f"authlib-injector-1.2.3.jar=ely.by", f"-Xmx{int(self.ram_mb)}M", "-Xms128M"]
 
 
                         data["User-info"][0]["username"] = self.usr
@@ -2225,6 +2238,7 @@ class eClient():
         '''Downloads minecraft with the specified version'''
         self.dl_opt = self.download_options.get()
         self.selected_ver = ""
+        self.l5 = ""
         self.detected_ver1 = ""  # yet another small hack
 
         self.max_value = [0]
@@ -2253,7 +2267,7 @@ class eClient():
 
             self.selected_version = data["selected-version"]
 
-            self.l5.config(text=self.selected_version, font=self.custom_font, fg="#15d38f", bg="#23272a")
+            #self.l5.config(text=self.selected_version, font=self.custom_font, fg="#15d38f", bg="#23272a")
 
         elif self.dl_opt == "Forge":
             self.selected_ver = self.fversionsList.get()

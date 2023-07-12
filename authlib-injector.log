@@ -1,24 +1,15 @@
-Logging started at 2023-07-11T14:25:28.892355100Z
-[authlib-injector] [INFO] Version: 1.1.39
+Logging started at 2023-07-12T11:03:32.489834100Z
+[authlib-injector] [INFO] Version: 1.2.3
 [authlib-injector] [INFO] Authentication server: https://ely.by
 [authlib-injector] [INFO] Redirect to: https://account.ely.by/api/authlib-injector
 [authlib-injector] [INFO] Disabled Mojang namespace
-[authlib-injector] [INFO] Polyfill privileges API
 [authlib-injector] [INFO] Transformed [net.minecraft.client.main.Main] with [Main Arguments Transformer]
-[authlib-injector] [INFO] Transformed [net.minecraft.client.main.Main] with [Callback Metafactory Transformer]
-[authlib-injector] [INFO] Transformed [net.minecraft.client.main.Main] with [Class File Version Transformer]
-[authlib-injector] [INFO] Enable MC-52974 Workaround
-[authlib-injector] [INFO] Httpd is running on port 60604
-[authlib-injector] [INFO] Transformed [bet] with [Constant URL Transformer]
-[authlib-injector] [INFO] Transformed [com.mojang.patchy.BlockedServers] with [Constant URL Transformer]
+[authlib-injector] [INFO] Setting accountType to msa
+[authlib-injector] [INFO] Transformed [com.mojang.authlib.properties.Property] with [Yggdrasil Public Key Transformer]
+[authlib-injector] [INFO] Httpd is running on port 65442
+[authlib-injector] [INFO] Transformed [net.minecraft.class_742] with [Constant URL Transformer]
 [authlib-injector] [INFO] Transformed [com.mojang.authlib.HttpAuthenticationService] with [ConcatenateURL Workaround]
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.HttpAuthenticationService] with [Callback Metafactory Transformer]
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.HttpAuthenticationService] with [Class File Version Transformer]
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.yggdrasil.YggdrasilGameProfileRepository] with [Constant URL Transformer]
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService] with [Constant URL Transformer]
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService] with [Texture Whitelist Transformer]
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService] with [Yggdrasil Public Key Transformer]
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService] with [MC-52974 Workaround]
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService] with [Callback Metafactory Transformer]
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService] with [Class File Version Transformer]
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.yggdrasil.YggdrasilUserAuthentication] with [Constant URL Transformer]
+[authlib-injector] [INFO] Transformed [com.mojang.authlib.yggdrasil.YggdrasilEnvironment] with [Constant URL Transformer]
+[authlib-injector] [INFO] Transformed [com.mojang.authlib.yggdrasil.YggdrasilServicesKeyInfo] with [Yggdrasil Public Key Transformer]
+[authlib-injector] [INFO] Transformed [net.minecraft.class_3248] with [Username Character Check Transformer]
+[authlib-injector] [INFO] Transformed [com.mojang.authlib.yggdrasil.TextureUrlChecker] with [Texture Whitelist Transformer]
