@@ -1,6 +1,8 @@
 
 # eClient
 [![justforfunnoreally.dev badge](https://img.shields.io/badge/justforfunnoreally-dev-9ff)](https://justforfunnoreally.dev)
+![image](https://github.com/v-pun215/eClient/assets/67716965/d73139fc-5331-49b4-a0a8-a600c6c67cdf)
+
 
 A Minecraft Launcher written in Python.
 
