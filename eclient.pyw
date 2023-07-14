@@ -200,7 +200,7 @@ background = canvas.create_image(
     image=background_img)
 
 
-if not lv == "1.4":
+if not lv == "v1.4":
     print("Update available!")
     top= Toplevel(root)
     top.geometry("450x200")
