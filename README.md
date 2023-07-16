@@ -11,7 +11,7 @@ Download Installer: https://github.com/v-pun215/eClient/releases/latest/download
 Based on PyCraft by shasankp000.
 
 See his work: https://github.com/shasankp000/PyCraft
-
+## [eClient Lite](https://github.com/v-pun215/eClient-Lite/) Released!
 ## Important: About the installer.
 The install.exe downloads all libraries from https://libs-pi.vercel.app/eclient.zip.
 
