@@ -6,11 +6,10 @@
 
 A Minecraft Launcher written in Python using Tkinter.
 
-Download Installer from [here](https://github.com/v-pun215/eClient/releases/latest/download/install.exe)
+Download Installer from [here](https://github.com/v-pun215/eClient/releases/latest/download/install.exe).
 
-Based on PyCraft by shasankp000.
+Based on [PyCraft by shasankp000](https://github.com/shasankp000/PyCraft).
 
-See his work: https://github.com/shasankp000/PyCraft
 ## [eClient Lite](https://github.com/v-pun215/eClient-Lite/) Released!
 ## Important: About the installer.
 The install.exe downloads all libraries from https://libs-pi.vercel.app/eclient.zip.
