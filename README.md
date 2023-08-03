@@ -4,9 +4,9 @@
 ![image](https://github.com/v-pun215/eClient/assets/67716965/d73139fc-5331-49b4-a0a8-a600c6c67cdf)
 
 
-A Minecraft Launcher written in Python.
+A Minecraft Launcher written in Python using Tkinter.
 
-Download Installer: https://github.com/v-pun215/eClient/releases/latest/download/install.exe
+Download Installer from [here](https://github.com/v-pun215/eClient/releases/latest/download/install.exe)
 
 Based on PyCraft by shasankp000.
 
