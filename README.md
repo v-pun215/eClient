@@ -23,7 +23,8 @@ So, if you want a older version of eClient, download source code from releases.
 
 
 ## Logo:
-![icon](https://github.com/v-pun215/eClient/assets/67716965/ca4560eb-dc12-41ef-9b45-0ede2d32ffca)
+![image](https://github.com/v-pun215/eClient/assets/67716965/adbf91eb-91c9-45c9-8ca9-2540055b41f1)
+
 
 
 ## Project Overview
