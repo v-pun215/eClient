@@ -23,6 +23,7 @@ So, if you want a older version of eClient, download source code from releases.
 
 
 ## Logo:
+
 ![image](https://github.com/v-pun215/eClient/assets/67716965/a79894df-042c-4c4f-9d90-4dac5638a4f2)
 
 
@@ -54,6 +55,7 @@ Ability to login with M̶o̶j̶a̶n̶g̶, Ely.by and Offline Accounts.
 Never gives you up.
 ## Screenshots
 eClient Updater
+
 ![image](https://github.com/v-pun215/eClient/assets/67716965/4fce9a7d-ad96-4dcf-8850-f218ee10f884)
 
 
@@ -61,40 +63,48 @@ eClient Updater
 
 
 eClient (Home)
+
 ![image](https://github.com/v-pun215/eClient/assets/67716965/fd9a1fbe-ebe2-4077-8cb6-81ef3752e69d)
 
 
 
 eClient (Installations tab)
+
 ![image](https://github.com/v-pun215/eClient/assets/67716965/1ff0dd9f-f31b-4f40-9b28-a803b5dcf073)
 
 
 
 eClient (Settings tab)
+
 ![image](https://github.com/v-pun215/eClient/assets/67716965/4b6bffea-012f-4459-ae0c-9f9adf4de4a1)
 
 
 
 eClient (Additional Settings tab)
+
 ![image](https://github.com/v-pun215/eClient/assets/67716965/1b96cf30-312b-4039-8201-0cc3c4b6eead)
 
 
 
 eClient (Accounts tab)
+
 ![image](https://github.com/v-pun215/eClient/assets/67716965/00f40c86-be37-416d-9342-6133f88317a4)
 
 
 
 eClient (Help tab)
+
 ![image](https://github.com/v-pun215/eClient/assets/67716965/5e038d32-96cd-4e75-9c46-0b21a4c99638)
 
 
 eClient (Mod Installer)
+
 ![image](https://github.com/v-pun215/eClient/assets/67716965/79555e54-3bd4-41fa-b70a-ecc4870fc13e)
 
 
 
 eClient (Accounts Window)
+
 ![mc7](https://github.com/v-pun215/eClient/assets/67716965/9acf0115-33fa-402e-8fbe-3bfcce503705)
 
 
