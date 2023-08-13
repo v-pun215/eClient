@@ -23,14 +23,14 @@ def end():
     if dire == "":
         print("Installing eClient to default directory...")
         os.chdir(r"C:\\Users\\{}\\AppData\\Roaming\\".format(usr_accnt))
-        wget.download("https://eclient-libs.earthsoft.me/eclient.zip", bar=wget.bar_adaptive)
-        filename3 = wget.detect_filename("https://eclient-libs.earthsoft.me/eclient.zip")
+        wget.download("https://libs-pi.vercel.app/eclient.zip", bar=wget.bar_adaptive)
+        filename3 = wget.detect_filename("https://libs-pi.vercel.app/eclient.zip")
         os.system('powershell -Command "Expand-Archive -LiteralPath eclient.zip -DestinationPath eClient"')
         os.system("del eclient.zip")
-        wget.download("https://eclient-libs.earthsoft.me/Install-Font.ps1", bar=wget.bar_adaptive)
-        wget.download("https://eclient-libs.earthsoft.me/command.py", bar=wget.bar_adaptive)
-        filename5= wget.detect_filename("https://eclient-libs.earthsoft.me/command.py")
-        filename4 = wget.detect_filename("https://eclient-libs.earthsoft.me/Install-Font.ps1")
+        wget.download("https://libs-pi.vercel.app/Install-Font.ps1", bar=wget.bar_adaptive)
+        wget.download("https://libs-pi.vercel.app/command.py", bar=wget.bar_adaptive)
+        filename5= wget.detect_filename("https://libs-pi.vercel.app/command.py")
+        filename4 = wget.detect_filename("https://libs-pi.vercel.app/Install-Font.ps1")
         os.system('move "Install-Font.ps1" "eClient/fonts"')
         os.chdir(r"C:\\Users\\{}\\AppData\\Roaming\\eClient\fonts".format(usr_accnt))
         os.system("powershell -executionpolicy bypass -File .\Install-Font.ps1 .\SF Pro Display Regular.otf")
@@ -43,26 +43,28 @@ def end():
         print("Creating shortcut...")
         damn = "C:\\Windows\\System32\\shortcut.exe"
         isExist = os.path.exists(damn)
+        
         if isExist == True:
+            os.chdir(r"C:\\Users\\{}\\Desktop\\ ".format(usr_accnt))
+            google = "C:\\Users\\{}\\AppData\\Roaming\\eClient".format(usr_accnt)
             os.system(f"shortcut.exe /F:eClient.lnk /A:C /T:{google}\\eclient.pyw /W:{google} /I:{google}\\mc.ico")
         elif isExist == False:
-            wget.download("https://eclient-libs.earthsoft.me/shortcut.exe", bar=wget.bar_adaptive)
+            wget.download("https://libs-pi.vercel.app/Shortcut.exe", bar=wget.bar_adaptive)
             shutil.move('shortcut.exe', 'C:\\Windows\\System32'.format(usr_accnt))
             google = "C:\\Users\\{}\\AppData\\Roaming\\eClient".format(usr_accnt)
             os.chdir(r"C:\\Users\\{}\\Desktop\\ ".format(usr_accnt))
             os.system(f"shortcut.exe /F:eClient.lnk /A:C /T:{google}\\eclient.pyw /W:{google} /I:{google}\\mc.ico")
+        os.system("pause")
+
     elif not dire == "":
         print("Installing eClient to {}...".format(dire))
         os.chdir(dire)
-        wget.download("https://eclient-libs.earthsoft.me/eclient.zip", bar=wget.bar_adaptive)
-        filename3 = wget.detect_filename("https://eclient-libs.earthsoft.me/eclient.zip")
+        wget.download("https://libs-pi.vercel.app/eclient.zip", bar=wget.bar_adaptive)
+        filename3 = wget.detect_filename("https://libs-pi.vercel.app/eclient.zip")
         os.system('powershell -Command "Expand-Archive -LiteralPath eclient.zip -DestinationPath eClient"')
         os.system("del eclient.zip")
-        wget.download("https://eclient-libs.earthsoft.me/Install-Font.ps1", bar=wget.bar_adaptive)
-        wget.download("https://eclient-libs.earthsoft.me/command.py", bar=wget.bar_adaptive)
-        filename5= wget.detect_filename("https://eclient-libs.earthsoft.me/command.py")
-        filename4 = wget.detect_filename("https://eclient-libs.earthsoft.me/Install-Font.ps1")
-        shutil.move('Install-Font.ps1', 'eClient/fonts')
+        wget.download("https://libs-pi.vercel.app/command.py", bar=wget.bar_adaptive)
+        filename5= wget.detect_filename("https://libs-pi.vercel.app/command.py")
         os.chdir("{}\\eClient\\fonts".format(dire))
         os.system("powershell -executionpolicy bypass -File .\Install-Font.ps1 .\SF Pro Display Regular.otf")
         os.system("powershell -executionpolicy bypass -File .\Install-Font.ps1 .\SF Pro Display Bold.otf")
@@ -72,21 +74,27 @@ def end():
         shutil.move('command.py', 'C:\\Users\\{}\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\minecraft_launcher_lib\\'.format(usr_accnt))
         print("eClient installed.")
         print("Creating shortcut...")
-        wget.download("https://eclient-libs.earthsoft.me/shortcut.exe", bar=wget.bar_adaptive)
-        shutil.move('shortcut.exe', 'C:\\Windows\\System32'.format(usr_accnt))
-        google2 = "{}\\eClient".format(dire)
-        os.chdir(r"C:\\Users\\{}\\Desktop\\ ".format(usr_accnt))
-        os.system(f"shortcut.exe /F:eClient.lnk /A:C /T:{google2}\\eclient.pyw /W:{google2} /I:{google2}\\mc.ico")
-        print("Shortcut created.")
+        damn = "C:\\Windows\\System32\\shortcut.exe"
+        isExist = os.path.exists(damn)
+        if isExist == True:
+            google = "{}\\eClient".format(dire)
+            os.chdir(r"C:\\Users\\{}\\Desktop\\ ".format(usr_accnt))
+            os.system(f"shortcut.exe /F:eClient.lnk /A:C /T:{google}\\eclient.pyw /W:{google} /I:{google}\\mc.ico")
+        elif isExist == False:
+            wget.download("https://libs-pi.vercel.app/Shortcut.exe", bar=wget.bar_adaptive)
+            shutil.move('shortcut.exe', 'C:\\Windows\\System32'.format(usr_accnt))
+            google = "{}\\eClient".format(dire)
+            os.chdir(r"C:\\Users\\{}\\Desktop\\ ".format(usr_accnt))
+            os.system(f"shortcut.exe /F:eClient.lnk /A:C /T:{google}\\eclient.pyw /W:{google} /I:{google}\\mc.ico")
         os.system("pause")
 
 
 def java():
     inst = input("Do you have Java 17 installed? (Y/N): ")
-    if inst == "Y" or "y":
+    if inst == "Y":
         print("Ok.")
         end()
-    elif inst == "N" or "n":
+    else:
         os.system("cls")
         print("Installing Java 17.....")
         wget.download("https://download.bell-sw.com/java/17.0.3+7/bellsoft-jdk17.0.3+7-windows-amd64.msi", bar=wget.bar_adaptive)
@@ -103,14 +111,14 @@ def dep():
     java()
 
 py = input("Do you have Python 3.10 installed? (Y/N): ")
-if py == "Y" or "y":
+if py == "Y":
     print("Ok, installing packages.")
     dep()
-elif py == "N" or "n":
+else:
     print("Installing Python 3.10...")
     wget.download("https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe", bar=wget.bar_adaptive)
-    filename = wget.detect_filename("https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exei")
-    os.system(f"msiexec /i {filename}")
+    filename = wget.detect_filename("https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe")
+    os.system(f"{filename}")
     time.sleep(5)
     os.remove(f"{filename}")
     dep()

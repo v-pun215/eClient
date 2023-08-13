@@ -14,5 +14,7 @@ class SpeedTracker():
     def get_download_speed(self):
         '''Returns the download speed'''
         print(f"Download Speed: {self.finalspeed} Mbit/s" )
-        return f"Download Speed: {self.finalspeed} Mbit/s" 
+        return f"Download Speed: {self.finalspeed} Mbit/s"
+
+
 

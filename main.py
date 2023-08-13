@@ -33,15 +33,33 @@ import customtkinter
 import webview
 import PIL.Image as im
 import PIL.ImageTk as imtk
-from ctypes import windll
+from ctypes import windll, byref, sizeof, c_int
 import ctypes
 import webbrowser
+from PyQt6.QtWidgets import QApplication, QMessageBox
+from PyQt6.QtWebEngineWidgets import QWebEngineView
+from PyQt6.QtWebEngineCore import QWebEngineProfile
+from PyQt6.QtCore import QUrl, QLocale
 windll.shcore.SetProcessDpiAwareness(1)
 myappid = u'vpun215.eclient.idk.1.0' # arbitrary string
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+
 first=False
 global usr_accnt
 usr_accnt = getpass.getuser()
+microaccount = False
+with open('msa.txt') as f:
+    content = f.read()
+    if content == 0:
+        microaccount = False
+    else:
+        microaccount = True
+
+        
+
+cl = "e9ce99a1-de8e-45a3-99e1-b1d3923d2621"
+re = "https://eclient-done.vercel.app/"
+se = "pLt8Q~usyUN_5OU7twaQzbFd-vM9IdAZ.YsjWaqu"
 theman = ""
 '''with open('light.txt') as f:
     content = f.read()
@@ -124,7 +142,8 @@ if OS.startswith("Linux"):
                     {
                         "username": None,
                         "AUTH_TYPE": None,
-                        "UUID": None
+                        "UUID": None,
+                        "Password": None
                     }
                 ],
                 "PC-info" : [
@@ -160,7 +179,8 @@ elif OS.startswith("Windows"):
                     {
                         "username": None,
                         "AUTH_TYPE": None,
-                        "UUID": None
+                        "UUID": None,
+                        "Password": None
                     }
                 ],
                 "PC-info" : [
@@ -180,7 +200,7 @@ elif OS.startswith("Windows"):
                 ],
                 "allocated_ram" : None,
                 "jvm-args": None,
-                "executablePath": r"C:\\Program Files\\BellSoft\\LibericaJDK-17\\bin\\java",
+                "executablePath": r"C:\\Program Files\\BellSoft\\LibericaJDK-8\\bin\\java.exe",
                 "ramlimiterExceptionBypassed": False,
                 "ramlimiterExceptionBypassedSelected": False
                 #"executablePath": r"{}/runtime/jre-legacy/windows/jre-legacy/bin/java".format(mc_dir)
@@ -209,6 +229,7 @@ os_name = data["PC-info"][0]["OS"]
 mc_home = data["Minecraft-home"]
 username = data["User-info"][0]["username"]
 uid = data["User-info"][0]["UUID"]
+password = data["User-info"][0]["Password"]
 accessToken = data["accessToken"]
 mc_dir = data["Minecraft-home"]
 auth_type = data["User-info"][0]["AUTH_TYPE"]
@@ -405,6 +426,9 @@ class eClient():
         self.window.geometry("1024x600+110+60")
         self.window.title("eClient Launcher")
         self.window.configure(bg="#23272a")
+        
+
+
 
         if os_name.startswith("Windows"):
             self.window.iconbitmap(r"{}/mc.ico".format(currn_dir))
@@ -413,6 +437,21 @@ class eClient():
         self.y_Top = int(self.window.winfo_screenheight()/2 - self.Tk_Height/2)
 
         self.window.geometry(f"+{self.x_Left}+{self.y_Top}")
+        if os.path.isfile("refresh_token.json"):
+            with open("refresh_token.json", "r", encoding="utf-8") as f:
+                refresh_token = json.load(f)
+                # Do the login with refresh token
+                try:
+                    account_informaton = minecraft_launcher_lib.microsoft_account.complete_refresh(cl, se, re, refresh_token)
+                    msaoptions = {
+                        "username": account_informaton["name"],
+                        "uuid": account_informaton["id"],
+                        "token": account_informaton["access_token"]
+                    }
+                # Show the window if the refresh token is invalid
+                except minecraft_launcher_lib.exceptions.InvalidRefreshToken:
+                    pass
+        
 
 
         self.canvas4 = Canvas(
@@ -634,7 +673,7 @@ class eClient():
             image=self.background_img)
 
         self.canvas.create_text(
-            500,140,
+            500,160,
             text = "eClient Launcher",
             fill = "white",
             font = ("SF Pro Display", int(36.0), "bold")
@@ -672,17 +711,50 @@ class eClient():
             bootstyle="info-outline")'''
         
         
-
-        self.b3 = Button(
-            self.frame1,
-            #image = self.img3,
-            text = f'{selected_ver}\n' + 'Ready to Play',
-            #background="green",
-            #foreground="white",
-            #height=20,
-            #width=20,
-            command=self.password_window,
-            bootstyle="info-outline")
+        if auth_type == "Offline Login":
+            self.b3 = Button(
+                self.frame1,
+                #image = self.img3,
+                text = f'{selected_ver}\n' + 'Ready to Play',
+                #background="green",
+                #foreground="white",
+                #height=20,
+                #width=20,
+                command=self.handle_run,
+                bootstyle="info-outline")
+        elif auth_type == "Mojang Login":
+            self.b3 = Button(
+                self.frame1,
+                #image = self.img3,
+                text = f'{selected_ver}\n' + 'Ready to Play',
+                #background="green",
+                #foreground="white",
+                #height=20,
+                #width=20,
+                command=self.password_window,
+                bootstyle="info-outline")
+        elif auth_type == "ElyBy Login":
+            self.b3 = Button(
+                self.frame1,
+                #image = self.img3,
+                text = f'{selected_ver}\n' + 'Ready to Play',
+                #background="green",
+                #foreground="white",
+                #height=20,
+                #width=20,
+                command=self.password_window,
+                bootstyle="info-outline")
+        elif auth_type == "Microsoft Account":
+            self.b3 = Button(
+                self.frame1,
+                #image = self.img3,
+                text = f'{selected_ver}\n' + 'Ready to Play',
+                #background="green",
+                #foreground="white",
+                #height=20,
+                #width=20,
+                command=self.handle_run,
+                bootstyle="info-outline")
 
         if connected == True:
 
@@ -748,7 +820,7 @@ class eClient():
 
 
 
-        self.img10 = PhotoImage(file = f"img/user.png")
+        '''self.img10 = PhotoImage(file = f"img/user.png")
         self.b10 = Button1(
             self.frame1,
             image = self.img10,
@@ -760,7 +832,7 @@ class eClient():
         self.b10.place(
             x = 930, y = 0,
             width = 89,
-            height = 87)
+            height = 87)'''
 
         self.l3 = Label(self.frame1)
         self.l3.place(x=1, y=1)
@@ -783,6 +855,11 @@ class eClient():
                 self.l4.config(text="ElyBy Account", font=self.custom_font1, foreground="white", background="#384766")
             elif self.acc_method == "Offline Login":
                 self.l4.config(text="Offline Account", font=self.custom_font1, foreground="white", background="#384766")
+            elif self.acc_method == "Microsoft Account":
+                self.l4.config(text="Microsoft Account", font=self.custom_font1, foreground="white", background="#384766")
+            '''elif microaccount == True:
+                self.acc
+                self.l4.config(text="Microsoft Account", font=self.custom_font1, foreground="white", background="#384766")'''
 
         elif connected == False:
 
@@ -843,7 +920,7 @@ class eClient():
 
 
 
-
+        
 
         self.canvas5 = Canvas(
             self.window_s,
@@ -948,7 +1025,7 @@ class eClient():
             self.window_s,
             text=f"Total : {self.ram*1000} MB",
             style = "info.TLabel",
-            background='#000000',
+            background='black',
             foreground="#15d38f",
             font=self.custom_font4
         )
@@ -1049,12 +1126,77 @@ class eClient():
 
         self.canvas10.create_text(
             510.0, 55.0,
-            text = "Mods",
+            text = "Microsoft Login",
             fill = "white",
             font = ("SF Pro Display", int(20.0), "bold"))
+        self.canvas10.create_text(
+            510.0, 255.0,
+            text = "Other Accounts",
+            fill = "white",
+            font = ("SF Pro Display", int(20.0), "bold"))
+        self.canvas10.create_text(
+            250.0, 330.0,
+            text = "Type",
+            fill = "white",
+            font = ("SF Pro Display", int(18.0), "bold"))
+        self.canvas10.create_text(
+            750.0, 330.0,
+            text = "Username",
+            fill = "white",
+            font = ("SF Pro Display", int(18.0), "bold"))
+        self.options = ("Mojang Login", "Offline Login", "ElyBy Login",)
+
+        if connected == True:
+
+            self.options = ("Mojang Login", "Offline Login", "ElyBy Login",)
+
+            self.selected_option = tk.StringVar()
+            self.acc_options = Combobox(self.canvas10, textvariable=self.selected_option)
+            self.acc_options["values"] = self.options
+            self.acc_options["state"] = "readonly"
+            self.acc_options.place(x=150, y=380)
+
+
+            self.acc_options.bind('<<ComboboxSelected>>')
+        elif connected == False:
+
+            self.options = ("Offline Login")
+
+            self.selected_option = tk.StringVar()
+            self.acc_options = Combobox(self.canvas10, textvariable=self.selected_option)
+            self.acc_options["values"] = self.options
+            self.acc_options["state"] = "readonly"
+            self.acc_options.place(x=1500, y=380)
+
+
+            self.acc_options.bind('<<ComboboxSelected>>')
+        self.entry0 = Entry(
+            self.canvas10,
+            bd = 0,
+            bg = "#c4c4c4",
+            font = ("SF Pro Display", 16),
+            highlightthickness = 0)
+
+        self.entry0.insert(0, f"{username}")
+
+        self.entry0.place(
+            x = 630, y = 380,
+            width = 250,
+            height = 33)
+        self.b11 = Button(self.canvas10, text="Save", command=self.save_acc, bootstyle="success-outline")
+        self.b11.place(x=470, y=510)
         
         
-        self.canvas10
+        
+        self.microsoftbutton = Button(
+            self.canvas10,
+            text="Login",
+            command=self.microsoft_login,
+            bootstyle="primary")
+        self.microsoftbutton.place(
+            x = 440, y = 100,
+            width = 120,
+            height = 40)
 
         self.background11 = self.canvas11.create_image(
                 500.0, 280.0,
@@ -1076,7 +1218,7 @@ class eClient():
             font = ("SF Pro Display", int(20.0), "bold"))
         self.canvas11.create_text(
             508.0, 290.0,
-            text = "shasankp000 for eClient",
+            text = "shasankp000 for PyCraft",
             fill = "white",
             font = ("SF Pro Display", int(12.0)))
         self.canvas11.create_text(
@@ -1091,7 +1233,7 @@ class eClient():
             font = ("SF Pro Display", int(20.0), "bold"))
         self.canvas11.create_text(
             508.0, 420.0,
-            text = "Version 1.4",
+            text = "Version 1.5",
             fill = "white",
             font = ("SF Pro Display", int(12.0)))
         self.canvas11.create_text(
@@ -1192,7 +1334,7 @@ class eClient():
         self.nb.add(self.p1, text="Installations")
         self.nb.add(self.window_s, text="Settings")
         self.nb.add(self.window_t, text="Additional Settings")
-        #self.nb.add(self.window_10, text="Mods")
+        self.nb.add(self.window_10, text="Accounts")
         self.nb.add(self.window_11, text="Help")
 
 
@@ -1614,7 +1756,45 @@ class eClient():
             js_set.close()
         if connected == True:
             if self.runtime_ver.startswith("Vanilla"): #Checking for selected version before running minecraft.
-                if self.login_method == "Mojang Login":
+                if self.login_method == "Microsoft Account":
+                    try:
+                        self.mc_ver = data["selected-version"].strip("Vanilla: ")
+                        self.detected_ver = ""  # yet another small hack
+                        if connected == True:
+                            if self.mc_ver.startswith("release"):
+                                self.detected_ver = self.mc_ver.strip("release ")
+                            elif self.mc_ver.startswith("snapshot"):
+                                self.detected_ver = self.mc_ver.strip("snapshot ")
+                        elif connected == False:
+                            self.detected_ver = self.mc_ver
+
+                        with open("refresh_token.json", "r", encoding="utf-8") as f:
+                            refresh_token = json.load(f)
+                            # Do the login with refresh token
+                            try:
+                                se = "pLt8Q~usyUN_5OU7twaQzbFd-vM9IdAZ.YsjWaqu"
+                                re = "https://eclient-done.vercel.app/"
+                                cl = "e9ce99a1-de8e-45a3-99e1-b1d3923d2621"
+                                account_informaton = minecraft_launcher_lib.microsoft_account.complete_refresh(cl, se, re, refresh_token)
+                                
+                                msaoptions = {
+                                    "username": account_informaton["name"],
+                                    "uuid": account_informaton["id"],
+                                    "token": account_informaton["access_token"]
+                                }
+                            # Show the window if the refresh token is invalid
+                            except minecraft_launcher_lib.exceptions.InvalidRefreshToken:
+                                pass
+                        self.window.withdraw()
+                        self.minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(self.detected_ver, self.mc_dir, msaoptions)
+
+                        print(self.detected_ver)
+                        print(f"Launching minecraft version {self.mc_ver}")
+                        subprocess.call(self.minecraft_command)
+                    except minecraft_launcher_lib.exceptions.VersionNotFound as e:
+                        showerror(title="Error!", message=e)
+
+                elif self.login_method == "Mojang Login":
                     try:
                         self.usr = data["User-info"][0]["username"]
                         self.pwd = self.pwd1
@@ -1781,6 +1961,39 @@ class eClient():
                         print(e)
 
             elif self.runtime_ver.startswith("Forge"):
+                if self.login_method == "Microsoft Account":
+                    try:
+                        self.mc_ver = data["selected-version"].strip("Forge: ")
+                        if connected == True:
+                            self.detected_ver1 = self.mc_ver[:7]+"forge-"+self.mc_ver[7:]
+                        elif connected == False:
+                            self.detected_ver1 = self.mc_ver[:7]+"forge-"+self.mc_ver[7:]
+
+                        with open("refresh_token.json", "r", encoding="utf-8") as f:
+                            refresh_token = json.load(f)
+                            # Do the login with refresh token
+                            try:
+                                se = "pLt8Q~usyUN_5OU7twaQzbFd-vM9IdAZ.YsjWaqu"
+                                re = "https://eclient-done.vercel.app/"
+                                cl = "e9ce99a1-de8e-45a3-99e1-b1d3923d2621"
+                                account_informaton = minecraft_launcher_lib.microsoft_account.complete_refresh(cl, se, re, refresh_token)
+                                
+                                msaoptions = {
+                                    "username": account_informaton["name"],
+                                    "uuid": account_informaton["id"],
+                                    "token": account_informaton["access_token"]
+                                }
+                            # Show the window if the refresh token is invalid
+                            except minecraft_launcher_lib.exceptions.InvalidRefreshToken:
+                                pass
+                        self.window.withdraw()
+                        self.minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(self.detected_ver1, self.mc_dir, msaoptions)
+
+                        print(self.detected_ver)
+                        print(f"Launching minecraft version {self.mc_ver}")
+                        subprocess.call(self.minecraft_command)
+                    except minecraft_launcher_lib.exceptions.VersionNotFound as e:
+                        showerror(title="Error!", message=e)
                 if self.login_method == "Mojang Login":
                     try:
                         self.usr = data["User-info"][0]["username"]
@@ -1951,6 +2164,44 @@ class eClient():
 
             elif self.runtime_ver.startswith("Fabric"):
                 self.lv = get_latest_loader_version()
+                if self.login_method == "Microsoft Account":
+                    try:
+                        self.mc_ver = data["selected-version"].strip("Fabric: ")
+                        if connected == True:
+                            self.v1 = self.mc_ver[:6]
+
+                            # This is done to get only the version number, cutting out the rest of the string including whitespace
+
+                            # Not required while running forge
+                            self.detected_ver2 = f"fabric-loader-{self.lv}-{self.v1}"
+                        elif connected == False:
+                            self.detected_ver2 = self.mc_ver
+
+                        with open("refresh_token.json", "r", encoding="utf-8") as f:
+                            refresh_token = json.load(f)
+                            # Do the login with refresh token
+                            try:
+                                se = "pLt8Q~usyUN_5OU7twaQzbFd-vM9IdAZ.YsjWaqu"
+                                re = "https://eclient-done.vercel.app/"
+                                cl = "e9ce99a1-de8e-45a3-99e1-b1d3923d2621"
+                                account_informaton = minecraft_launcher_lib.microsoft_account.complete_refresh(cl, se, re, refresh_token)
+                                
+                                msaoptions = {
+                                    "username": account_informaton["name"],
+                                    "uuid": account_informaton["id"],
+                                    "token": account_informaton["access_token"]
+                                }
+                            # Show the window if the refresh token is invalid
+                            except minecraft_launcher_lib.exceptions.InvalidRefreshToken:
+                                pass
+                        self.window.withdraw()
+                        self.minecraft_command = minecraft_launcher_lib.command.get_minecraft_command(self.detected_ver2, self.mc_dir, msaoptions)
+
+                        print(self.detected_ver)
+                        print(f"Launching minecraft version {self.mc_ver}")
+                        subprocess.call(self.minecraft_command)
+                    except minecraft_launcher_lib.exceptions.VersionNotFound as e:
+                        showerror(title="Error!", message=e)
                 if self.login_method == "Mojang Login":
                     try:
                         self.usr = data["User-info"][0]["username"]
@@ -2457,14 +2708,21 @@ class eClient():
                 data["User-info"][0]["AUTH_TYPE"] = self.acc_method
 
                 if self.acc_method == "Mojang Login":
-                    self.l3.config(text=self.u1, font=self.custom_font3, foreground="#000000", background="#cacced")
-                    self.l4.config(text="mojang account", font=self.custom_font1, foreground="#000000", background="#cacced")
+                    self.l3.config(text=self.u1, font=self.custom_font3, foreground="white", background="#384766")
+                    self.l4.config(text="mojang account", font=self.custom_font1, foreground="white", background="#384766")
                 elif self.acc_method == "ElyBy Login":
-                    self.l3.config(text=self.u1, font=self.custom_font3, foreground="#000000", background="#cacced")
-                    self.l4.config(text="ely.by account", font=self.custom_font1, foreground="#000000", background="#cacced")
+                    self.l3.config(text=self.u1, font=self.custom_font3, foreground="white", background="#384766")
+                    self.l4.config(text="ely.by account", font=self.custom_font1, foreground="white", background="#384766")
                 elif self.acc_method == "Offline Login":
-                    self.l3.config(text=self.u1, font=self.custom_font3, foreground="#000000", background="#cacced")
-                    self.l4.config(text="no account", font=self.custom_font1, foreground="#000000", background="#cacced")
+                    self.l3.config(text=self.u1, font=self.custom_font3, foreground="white", background="#384766")
+                    self.l4.config(text="no account", font=self.custom_font1, foreground="white", background="#384766")
+                elif self.acc_method == "Microsoft Account":
+                    with open('name.json') as f:
+                        data1 = json.load(f)
+                    data["User-info"][0]["username"] = data1
+                    data["User-info"][0]["AUTH_TYPE"] = self.acc_method
+                    self.l3.config(text=data1, font=self.custom_font3, foreground="white", background="#384766")
+                    self.l4.config(text="Microsoft Account", font=self.custom_font1, foreground="white", background="#384766")
 
                 with open("settings.json", "w") as f:
                         json.dump(data, f, indent=4)
@@ -2472,9 +2730,14 @@ class eClient():
 
 
             else:
-                self.l3.config(text=self.u1, font=self.custom_font3, foreground="#000000", background="#cacced")
+                self.l3.config(text=self.u1, font=self.custom_font3, foreground="white", background="#384766")
 
-                data["User-info"][0]["username"] = self.u1
+                if self.acc_method == "Microsoft Login":
+                    with open('name.json') as f:
+                        data1 = json.load(f)
+                    data["User-info"][0]["username"] = data1
+                else:
+                    data["User-info"][0]["username"] = self.u1
                 data["User-info"][0]["AUTH_TYPE"] = self.acc_method
 
                 with open("settings.json", "w") as f:
@@ -2484,17 +2747,24 @@ class eClient():
 
 
             if self.acc_method == "Mojang Login":
-                self.l3.config(text=self.u1, font=self.custom_font3, foreground="#000000", background="#cacced")
-                self.l3.config(text=data["User-info"][0]["username"], font=self.custom_font3, foreground="#000000", background="#cacced")
-                self.l4.config(text="mojang account", font=self.custom_font1, foreground="#000000", background="#cacced")
+                self.l3.config(text=self.u1, font=self.custom_font3, foreground="white", background="#384766")
+                self.l3.config(text=data["User-info"][0]["username"], font=self.custom_font3, foreground="white", background="#384766")
+                self.l4.config(text="Mojang Account", font=self.custom_font1, foreground="white", background="#384766")
             elif self.acc_method == "ElyBy Login":
-                self.l3.config(text=self.u1, font=self.custom_font3, foreground="#000000", background="#cacced")
-                self.l3.config(text=data["User-info"][0]["username"], font=self.custom_font3, foreground="#000000", background="#cacced")
-                self.l4.config(text="ely.by account", font=self.custom_font1, foreground="#000000", background="#cacced")
+                self.l3.config(text=self.u1, font=self.custom_font3, foreground="white", background="#384766")
+                self.l3.config(text=data["User-info"][0]["username"], font=self.custom_font3, foreground="white", background="#384766")
+                self.l4.config(text="ElyBy Account", font=self.custom_font1, foreground="white", background="#384766")
             elif self.acc_method == "Offline Login":
-                self.l3.config(text=self.u1, font=self.custom_font3, foreground="#000000", background="#cacced")
-                self.l3.config(text=data["User-info"][0]["username"], font=self.custom_font3, foreground="#000000", background="#cacced")
-                self.l4.config(text="no account", font=self.custom_font1, foreground="#000000", background="#cacced")
+                self.l3.config(text=self.u1, font=self.custom_font3, foreground="white", background="#384766")
+                self.l3.config(text=data["User-info"][0]["username"], font=self.custom_font3, foreground="white", background="#384766")
+                self.l4.config(text="Offline Account", font=self.custom_font1, foreground="white", background="#384766")
+            elif self.acc_method == "Microsoft Account":
+                with open('name.json') as f:
+                    data1 = json.load(f)
+                data["User-info"][0]["username"] = data1
+                self.l3.config(text=data1, font=self.custom_font3, foreground="white", background="#384766")
+                self.l4.config(text="Microsoft Account", font=self.custom_font1, foreground="white", background="#384766")
+                
 
         else:
             data["User-info"][0]["AUTH_TYPE"] = "Offline Login"
@@ -2504,12 +2774,12 @@ class eClient():
                 f.close()
 
             if data["User-info"][0]["username"] == None:
-                self.l3.config(text=self.u1, font=self.custom_font3, foreground="#000000", background="#cacced")
+                self.l3.config(text=self.u1, font=self.custom_font3, foreground="white", background="#384766")
             else:
-                self.l3.config(text=data["User-info"][0]["username"], foreground="#000000", background="#cacced")
+                self.l3.config(text=data["User-info"][0]["username"], foreground="white", background="#384766")
 
 
-            self.l4.config(text="User is offline", font=self.custom_font1, foreground="#000000", background="#cacced")
+            self.l4.config(text="User is offline", font=self.custom_font1, foreground="white", background="#384766")
 
     def profile_window(self):
 
@@ -2537,14 +2807,14 @@ class eClient():
 
 
         self.canvas3.create_text(
-            60, 380,
+            80, 380,
             text = "Accounts",
             fill = "white",
             font = ("SF Pro Display", int(16.0), "bold"))
 
         if connected == True:
 
-            self.options = ("Mojang Login", "Offline Login", "ElyBy Login")
+            self.options = ("Mojang Login", "Offline Login", "ElyBy Login",)
 
             self.selected_option = tk.StringVar()
             self.acc_options = Combobox(self.p2, textvariable=self.selected_option)
@@ -2554,6 +2824,13 @@ class eClient():
 
 
             self.acc_options.bind('<<ComboboxSelected>>')
+            self.canvas3.create_text(
+                150,50,
+                text = "Microsoft Login (beta)",
+                fill="white",
+                font=("SF Pro Display", int(17.0), "bold"))
+            self.msa = Button(self.canvas3, text="Open Login Window", command=self.microsoft_login, bootstyle="success-outline")
+            self.msa.place(x=40, y=80)
 
         elif connected == False:
 
@@ -2590,7 +2867,7 @@ class eClient():
             x = 260, y = 410,
             width = 250,
             height = 33)
-
+        
         self.canvas3.create_text(
             360, 380.0,
             text = "Username",
@@ -2600,7 +2877,42 @@ class eClient():
         self.b11 = Button(self.p2, text="Save", command=self.save_acc, bootstyle="success-outline")
         self.b11.place(x=540, y=410)
 
-
+    def microsoft_login(self):
+        #os.system("python msa.py")
+        subprocess.call('python msa.py', shell=True)
+        print("Microsoft Account added. Please relaunch eClient.")
+        data["User-info"][0]["AUTH_TYPE"] = "Microsoft Account"
+        with open("name.json") as f:
+            data1 = json.load(f)
+        data["User-info"][0]["username"] = data1
+        self.l3.config(text=data1, font=self.custom_font3, foreground="white", background="#384766")
+        self.l4.config(text="Microsoft Account", font=self.custom_font1, foreground="white", background="#384766")
+        with open("uuid.json") as f:
+            data2 = json.load(f)
+        data["User-info"][0]["UUID"] = data2
+        with open("settings.json", "w") as msa_set:
+            json.dump(data, msa_set, indent=4)
+            msa_set.close()
+        with open("refresh_token.json", "r", encoding="utf-8") as f:
+                refresh_token = json.load(f)
+                # Do the login with refresh token
+                try:
+                    account_informaton = minecraft_launcher_lib.microsoft_account.complete_refresh(cl, se, re, refresh_token)
+                    global msaoptions
+                    msaoptions = {
+                        "username": account_informaton["name"],
+                        "uuid": account_informaton["id"],
+                        "token": account_informaton["access_token"]
+                    }
+                # Show the window if the refresh token is invalid
+                except minecraft_launcher_lib.exceptions.InvalidRefreshToken:
+                    pass
+        showinfo(title="Microsoft Account", message="Microsoft Account added. Please relaunch eClient.")
+        
+        
+        
+        
+        
 
     def confirm(self):
         self.pwd1 = self.entry1.get()
@@ -2608,53 +2920,59 @@ class eClient():
         self.handle_run()
         print(self.pwd1)
 
+    
+
+
     def password_window(self):
-        self.p3 = tk.Toplevel()
-        self.p3.title("Enter Password")
-        self.p3.geometry("630x200")
+        if self.acc_method == "Microsoft Account":
+            self.handle_run()
+        else:
+            self.p3 = tk.Toplevel()
+            self.p3.title("Enter Password")
+            self.p3.geometry("630x200")
 
-        self.p3.configure(bg="white")
-        self.p3.resizable(False,False)
-        self.canvas4 = Canvas(
-            self.p3,
-            height = 200,
-            width = 800,
-            bd = 0,
-            highlightthickness = 0,
-            relief = "ridge")
-        self.canvas4.place(x = 0, y = 0)
+            self.p3.configure(bg="white")
+            self.p3.resizable(False,False)
+            self.canvas4 = Canvas(
+                self.p3,
+                height = 200,
+                width = 800,
+                bd = 0,
+                highlightthickness = 0,
+                relief = "ridge")
+            self.canvas4.place(x = 0, y = 0)
 
-        '''self.entry1_img = PhotoImage(file = f"img/img_textBox1.png")
-        self.entry1_bg = self.canvas4.create_image(
-            230, 92,
-            image = self.entry1_img)'''
+            '''self.entry1_img = PhotoImage(file = f"img/img_textBox1.png")
+            self.entry1_bg = self.canvas4.create_image(
+                230, 92,
+                image = self.entry1_img)'''
 
-        self.entry1 = Entry(
-            self.canvas4,
-            bd = 0,
-            bg = "#c4c4c4",
-            show = ".",
-            font = ("SF Pro Display", 16),
-            highlightthickness = 0)
-
-
-        self.canvas4.create_text(
-            80, 80,
-            text = "Password: ",
-            fill = "white",
-            font = ("SF Pro Display", int(16.0), "bold"))
-
-        self.entry1.place(
-            x = 155, y = 60 ,
-            width = 300,
-            height = 36)
+            self.entry1 = Entry(
+                self.canvas4,
+                bd = 0,
+                bg = "#c4c4c4",
+                show = ".",
+                font = ("SF Pro Display", 16),
+                highlightthickness = 0)
 
 
-        self.l6 = tk.Label(self.canvas4, text="Please enter your password to play. It won't be saved.", font=Font(family="SF Pro Display", size=16), foreground="#15d38f", background="#23272a")
-        self.l6.place(x=10, y=135)
+            self.canvas4.create_text(
+                80, 80,
+                text = "Password: ",
+                fill = "white",
+                font = ("SF Pro Display", int(16.0), "bold"))
 
-        self.b12 = Button(self.canvas4, text="Confirm", command=self.confirm, bootstyle="warning-outline")
-        self.b12.place(x=520,y=62)
+            self.entry1.place(
+                x = 155, y = 60 ,
+                width = 300,
+                height = 36)
+
+
+            self.l6 = tk.Label(self.canvas4, text="Please enter your password to play. It won't be saved.", font=Font(family="SF Pro Display", size=16), foreground="#15d38f", background="#23272a")
+            self.l6.place(x=10, y=135)
+
+            self.b12 = Button(self.canvas4, text="Confirm", command=self.confirm, bootstyle="warning-outline")
+            self.b12.place(x=520,y=62)
 
 
 
@@ -2885,10 +3203,38 @@ class eClient():
 
 
         self.b16.place(
-            x = 275, y = 190,
+            x = 75, y = 190,
             width = 180,
             height = 40)
-
+        
+        self.modfol = Button(
+            self.mod_win,
+            text="Open Mods Folder",
+            command=self.modfolder,
+            bootstyle="info-outline")
+        self.modfol.place(
+            x = 275, y =190,
+            width=180,
+            height=40)
+        self.modsboi = Button(
+            self.mod_win,
+            text="See Mods Installed",
+            command=self.modsins,
+            bootstyle="info-outline")
+        self.modsboi.place(
+            x = 475, y =190,
+            width=180,
+            height=40)
+        
+        
+        
+    def modsins(self):
+        os.system("python mc.py")
+    def modfolder(self):
+        moduser = getpass.getuser()
+        path = f"C:/Users/{moduser}/AppData/Roaming/.minecraft/mods/"
+        path = os.path.realpath(path)
+        os.startfile(path)
 
     def download_mod(self):
         '''Downloads the mod from Modrinth'''

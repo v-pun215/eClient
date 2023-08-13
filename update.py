@@ -51,7 +51,7 @@ shutil.rmtree(path3)
 shutil.rmtree(path4)
 
 print("Extracting eClient...")
-filename3 = wget.detect_filename("https://libs-pi.vercel.app/eclient.zip")
+filename3 = wget.detect_filename("https://eclient-libs.earthsoft.me/eclient.zip")
 os.system('powershell -Command "Expand-Archive -LiteralPath eclient.zip -DestinationPath Update"')
 path6 = Path("Update")
 

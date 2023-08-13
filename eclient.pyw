@@ -38,7 +38,7 @@ def con():
     top.destroy()
 response = requests.get("https://api.github.com/repos/v-pun215/eClient/releases/latest")
 lv = response.json()["name"]
-if not lv == "v1.4":
+if not lv == "1.5":
     print("Update available!")
 def get_size(bytes, suffix="B"):
     #Found this on some website, i don't remember now. Used to get the total ram in GB.
@@ -200,7 +200,7 @@ background = canvas.create_image(
     image=background_img)
 
 
-if not lv == "v1.4":
+if not lv == "v1.5":
     print("Update available!")
     top= Toplevel(root)
     top.geometry("450x200")
@@ -280,7 +280,7 @@ root.after(10000, lambda: c1.configure(text="Getting everything ready...."))
 canvas.create_text(
     400, 200,
     text = "eClient Launcher",
-    fill = "white",
+    fill = "black",
     font = ("SF Pro Display", int(26.0), "bold"))
 
 

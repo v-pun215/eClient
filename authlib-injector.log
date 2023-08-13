@@ -1,15 +1,6 @@
-Logging started at 2023-07-12T11:03:32.489834100Z
+Logging started at 2023-08-09T15:53:50.279Z
 [authlib-injector] [INFO] Version: 1.2.3
 [authlib-injector] [INFO] Authentication server: https://ely.by
 [authlib-injector] [INFO] Redirect to: https://account.ely.by/api/authlib-injector
 [authlib-injector] [INFO] Disabled Mojang namespace
 [authlib-injector] [INFO] Transformed [net.minecraft.client.main.Main] with [Main Arguments Transformer]
-[authlib-injector] [INFO] Setting accountType to msa
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.properties.Property] with [Yggdrasil Public Key Transformer]
-[authlib-injector] [INFO] Httpd is running on port 65442
-[authlib-injector] [INFO] Transformed [net.minecraft.class_742] with [Constant URL Transformer]
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.HttpAuthenticationService] with [ConcatenateURL Workaround]
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.yggdrasil.YggdrasilEnvironment] with [Constant URL Transformer]
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.yggdrasil.YggdrasilServicesKeyInfo] with [Yggdrasil Public Key Transformer]
-[authlib-injector] [INFO] Transformed [net.minecraft.class_3248] with [Username Character Check Transformer]
-[authlib-injector] [INFO] Transformed [com.mojang.authlib.yggdrasil.TextureUrlChecker] with [Texture Whitelist Transformer]
