@@ -11,7 +11,9 @@ Download Installer from [here](https://github.com/v-pun215/eClient/releases/late
 
 Based on [PyCraft by shasankp000](https://github.com/shasankp000/PyCraft).
 
-## [eClient Lite](https://github.com/v-pun215/eClient-Lite/) Released!
+## Have A Potato PC?
+Check out [eClient Lite](https://github.com/v-pun215/eClient-Lite)
+
 ## Important: About the installer.
 The install.exe downloads all libraries from https://libs-pi.vercel.app/eclient.zip.
 
@@ -50,36 +52,53 @@ Ability to login with M̶o̶j̶a̶n̶g̶, Ely.by and Offline Accounts.
 Never gives you up.
 ## Screenshots
 eClient Updater
-![image](https://github.com/v-pun215/eClient/assets/67716965/1832df19-6d37-40fe-a5d5-140efd597e55)
+![image](https://github.com/v-pun215/eClient/assets/67716965/4fce9a7d-ad96-4dcf-8850-f218ee10f884)
+
 
 
 
 
 eClient (Home)
-![mc1](https://github.com/v-pun215/eClient/assets/67716965/419a3ab7-707a-4128-85c0-d5109310fd90)
+![image](https://github.com/v-pun215/eClient/assets/67716965/fd9a1fbe-ebe2-4077-8cb6-81ef3752e69d)
+
 
 
 eClient (Installations tab)
-![mc2](https://github.com/v-pun215/eClient/assets/67716965/b4d67b51-2d98-4a8c-b163-4fbffcccaf4c)
+![image](https://github.com/v-pun215/eClient/assets/67716965/1ff0dd9f-f31b-4f40-9b28-a803b5dcf073)
+
 
 
 eClient (Settings tab)
-![mc3](https://github.com/v-pun215/eClient/assets/67716965/87d7c3c5-49d6-4faa-a02f-616928aa070b)
+![image](https://github.com/v-pun215/eClient/assets/67716965/4b6bffea-012f-4459-ae0c-9f9adf4de4a1)
+
 
 
 eClient (Additional Settings tab)
-![mc4](https://github.com/v-pun215/eClient/assets/67716965/70d93c6e-4e0c-4b1d-a318-3969f038ea99)
+![image](https://github.com/v-pun215/eClient/assets/67716965/1b96cf30-312b-4039-8201-0cc3c4b6eead)
+
+
+
+eClient (Accounts tab)
+![image](https://github.com/v-pun215/eClient/assets/67716965/00f40c86-be37-416d-9342-6133f88317a4)
+
 
 
 eClient (Help tab)
-![image](https://github.com/v-pun215/eClient/assets/67716965/fdc1d5fa-1510-441a-802a-bff86b3f53e2)
+![image](https://github.com/v-pun215/eClient/assets/67716965/5e038d32-96cd-4e75-9c46-0b21a4c99638)
 
 
 eClient (Mod Installer)
-![mc6](https://github.com/v-pun215/eClient/assets/67716965/6d147b3c-e1c5-4aca-85b0-ba73a3e35cc7)
+![image](https://github.com/v-pun215/eClient/assets/67716965/79555e54-3bd4-41fa-b70a-ecc4870fc13e)
+
+
 
 eClient (Accounts Window)
 ![mc7](https://github.com/v-pun215/eClient/assets/67716965/9acf0115-33fa-402e-8fbe-3bfcce503705)
+
+
+eClient (Mod Installer - List of Mods)
+![image](https://github.com/v-pun215/eClient/assets/67716965/7fd0ae69-fce5-4563-9933-6b33e9715325)
+
 
 ## Installation
 Check releases tab.
