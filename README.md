@@ -103,9 +103,7 @@ eClient (Mod Installer)
 
 
 
-eClient (Accounts Window)
 
-![mc7](https://github.com/v-pun215/eClient/assets/67716965/9acf0115-33fa-402e-8fbe-3bfcce503705)
 
 
 eClient (Mod Installer - List of Mods)
