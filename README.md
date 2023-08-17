@@ -37,12 +37,12 @@ Update for macOS is coming soon.
 This launcher downloads Minecraft Libraries from the official libraries.minecraft.net.
 
 This launcher's main goal is not to pirate the game, it's simply to port the launcher to Python :)
-## Known Bugs -
-When launching Minecraft 1.20, Minecraft loads in with 'Failed to Quick Play'. Trying to fix this issue.
+## Known Bugs
+~~When launching Minecraft 1.20, Minecraft loads in with 'Failed to Quick Play'. Trying to fix this issue.~~
 
 Not able to login to Mojang accounts anymore (Mojang disabled the API).
 
-Forge can't install and run properly.
+Forge can't install and run properly (Only in versions before 1.13)
 ## Features
 Can install and launch all versions of Minecraft Java Edition (starting from 1.0)
 
