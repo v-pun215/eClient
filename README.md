@@ -44,13 +44,13 @@ Not able to login to Mojang accounts anymore (Mojang disabled the API).
 
 Forge can't install and run properly (Only in versions before 1.13)
 ## Features
-Can install and launch all versions of Minecraft Java Edition (starting from 1.0)
+Can install and launch all versions of Minecraft Java Edition (starting from 1.0).
 
-Can install mods directly from the launcher
+Can install mods directly from the launcher.
 
-Supports Fabric.
+Supports Fabric, Forge and [Optifine](https://optifine.net)
 
-Ability to login with M̶o̶j̶a̶n̶g̶, Ely.by and Offline Accounts.
+Ability to login with ~~Mojang~~, Ely.by, Offline Accounts and Microsoft Accounts (see [v1.5](https://github.com/v-pun215/eClient/releases/v1.5)).
 
 Never gives you up.
 ## Screenshots
