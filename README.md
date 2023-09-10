@@ -1,5 +1,6 @@
 
 # eClient
+
 [![justforfunnoreally.dev badge](https://img.shields.io/badge/justforfunnoreally-dev-9ff)](https://justforfunnoreally.dev)
 ![image](https://github.com/v-pun215/eClient/assets/67716965/08c52dcf-a60a-4e62-8350-7257f2cdcca4)
 
@@ -7,20 +8,29 @@
 
 A Minecraft Launcher written in Python using Tkinter.
 
-Download Installer from [here](https://github.com/v-pun215/eClient/releases/latest/download/install.exe).
+Download Installer from [here](https://github.com/v-pun215/eClient/releases/download/v1.6/eClient-v1.6-x64-Installer.exe).
 
 Based on [PyCraft by shasankp000](https://github.com/shasankp000/PyCraft).
 
 ## Have A Potato PC?
-Check out [eClient Lite](https://github.com/v-pun215/eClient-Lite)
+Check out [eClient Lite](https://github.com/v-pun215/eClient-Lite).
 
 ## Important: About the installer.
-The install.exe downloads all libraries from https://libs-pi.vercel.app/eclient.zip.
+The Installer might get flagged as a virus on your machine.
 
-All install.exe do this (even setup.exe) 
+This is a *false positive*.
 
-So, if you want a older version of eClient, download source code from releases.
+This happens because I compile the installer using PyInstaller.
 
+Microsoft Defender should not report it as a virus.
+
+**IMPORTANT**: This might appear after double-clicking on the installer.
+
+![image](https://github.com/v-pun215/eClient/assets/67716965/a7e67367-bb51-4c31-8b7f-14df083ad64d)
+
+To solve this issue, click ```More Info``` and then click ```Run Anyway```.
+
+This is because I haven't signed this exe (and I don't plan to, unless someone gives me a couple hundred bucks).
 
 ## Logo:
 
