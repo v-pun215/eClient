@@ -27,15 +27,15 @@ usr_accnt = getpass.getuser()
 if os.path.exists("C:\\users\\{}\\AppData\\Roaming\\.minecraft"):
     mc_dir = r"C:\\users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)
 else:
-    mc_dir = r"{}\.minecraft".format(currn_dir)
+    mc_dir = r"C:\\users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)
 os_name = platform.platform()
 def update():
     os.system("python update.py")
     sys.exit(0)
     
 def con():
-    pass
     top.destroy()
+    root.wm_attributes("-disabled", False)
 response = requests.get("https://api.github.com/repos/v-pun215/eClient/releases/latest")
 lv = response.json()["name"]
 if not lv == "1.5":
@@ -200,8 +200,9 @@ background = canvas.create_image(
     image=background_img)
 
 
-if not lv == "v1.5":
+if not lv == "v1.6":
     print("Update available!")
+    root.wm_attributes("-disabled", True)
     top= Toplevel(root)
     top.geometry("450x200")
     top.title("Update Available: {}".format(lv))
@@ -341,7 +342,7 @@ def checksettings():
                 f.write("taskkill /f /im python.exe\n")  #frees up cpu and memory
                 f.write("yeah.cmd")
                 f.close()
-            root.after(23000, lambda: t2.start())
+            root.after(5000, lambda: t2.start())
 
 
 
@@ -352,8 +353,8 @@ window_running = True
 pb1.start()
 checksettings()
 #root.after(20000, lambda: pb1.stop())
-root.after(24000, lambda: root.withdraw())
-root.after(30000, lambda: root.destroy())
+root.after(5000, lambda: root.withdraw())
+root.after(7000, lambda: root.destroy())
 
 
 
