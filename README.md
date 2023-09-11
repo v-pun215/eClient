@@ -2,7 +2,8 @@
 # eClient
 
 [![justforfunnoreally.dev badge](https://img.shields.io/badge/justforfunnoreally-dev-9ff)](https://justforfunnoreally.dev)
-![image](https://github.com/v-pun215/eClient/assets/67716965/08c52dcf-a60a-4e62-8350-7257f2cdcca4)
+
+![260288489-08c52dcf-a60a-4e62-8350-7257f2cdcca4-modified](https://github.com/v-pun215/eClient/assets/67716965/1d990031-e88f-4956-a086-54b5b047e5ef)
 
 
 
@@ -15,7 +16,47 @@ Based on [PyCraft by shasankp000](https://github.com/shasankp000/PyCraft).
 ## Have A Potato PC?
 Check out [eClient Lite](https://github.com/v-pun215/eClient-Lite).
 
-## Important: About the installer.
+
+
+
+
+## Project Overview
+This launcher aims to be the best launcher (that I can code) built for Windows 10/11.
+
+It has many features including a Mod Installer.
+
+This launcher downloads Minecraft Libraries from the official libraries.minecraft.net.
+
+This launcher's main goal is not to pirate the game, it's simply to port the launcher to Python :)
+## Bugs
+A check means that the bug has been resolved.
+
+- [x] When launching Minecraft 1.20, Minecraft loads in with 'Failed to Quick Play'. 
+- [ ] Not able to login to Mojang accounts anymore (Mojang disabled the API).
+- [ ] Forge can't install and run properly (Only in versions before 1.13).
+
+**Report New Bugs in [Issues](https://github.com/v-pun215/eClient/issues).**
+## Features
+- Can install and launch all versions of Minecraft: Java Edition (starting from 1.0).
+- Can install mods (from Modrinth) directly from the launcher.
+- Supports Fabric, Forge and [Optifine](https://optifine.net).
+- Ability to login with Ely.by, Offline Accounts and **Microsoft Accounts** (see [v1.5](https://github.com/v-pun215/eClient/releases/v1.5)).
+- Can run the game (in singleplayer) when offline, using an *offline* account.
+
+## Skins
+eClient supports custom Minecraft skins.
+
+For Microsoft Accounts:
+ - Change your skin [here](https://www.minecraft.net/en-us/msaprofile/mygames/editskin).
+ - Wait a few minutes, then relaunch eClient.
+
+For Ely.by Accounts:
+ - Change your skin [here](https://ely.by/skins).
+ - Wait a few minutes, then relaunch eClient.
+
+Offline Accounts don't have support for custom skins, as they are not authenticated.
+
+## About the installer.
 The Installer might get flagged as a virus on your machine.
 
 This is a *false positive*.
@@ -31,38 +72,6 @@ Microsoft Defender should not report it as a virus.
 To solve this issue, click ```More Info``` and then click ```Run Anyway```.
 
 This is because I haven't signed this exe (and I don't plan to, unless someone gives me a couple hundred bucks).
-
-## Logo:
-
-![image](https://github.com/v-pun215/eClient/assets/67716965/a79894df-042c-4c4f-9d90-4dac5638a4f2)
-
-
-
-
-## Project Overview
-This launcher aims to be the best launcher (that I can code) built for both Windows (tested) and Linux (not tested).
-
-Update for macOS is coming soon.
-
-This launcher downloads Minecraft Libraries from the official libraries.minecraft.net.
-
-This launcher's main goal is not to pirate the game, it's simply to port the launcher to Python :)
-## Known Bugs
-~~When launching Minecraft 1.20, Minecraft loads in with 'Failed to Quick Play'. Trying to fix this issue.~~
-
-Not able to login to Mojang accounts anymore (Mojang disabled the API).
-
-Forge can't install and run properly (Only in versions before 1.13)
-## Features
-Can install and launch all versions of Minecraft Java Edition (starting from 1.0).
-
-Can install mods directly from the launcher.
-
-Supports Fabric, Forge and [Optifine](https://optifine.net)
-
-Ability to login with ~~Mojang~~, Ely.by, Offline Accounts and Microsoft Accounts (see [v1.5](https://github.com/v-pun215/eClient/releases/v1.5)).
-
-Never gives you up.
 ## Screenshots
 eClient Updater
 
