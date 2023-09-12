@@ -5,10 +5,9 @@ import getpass
 import time
 import wget
 import shutil
-from elevate import elevate
-elevate()
 
 
+os.system("title eClient 1.7 Installer")
 print("-eClient Setup-")
 print("Getting necessary stuff...")
 time.sleep(2)
@@ -19,44 +18,37 @@ py_ver = platform.python_version()
 def end():
     print("Thank you for choosing eClient.")
     print("Setup will now start installing eClient.")
-    dire = input("Where do you want to install eClient? (Default: C:\\Users\\{}\\AppData\\Roaming\\eClient): ".format(usr_accnt))
-    if dire == "":
-        print("Installing eClient to default directory...")
-        os.chdir(r"C:\\Users\\{}\\AppData\\Roaming\\".format(usr_accnt))
-        wget.download("https://libs-pi.vercel.app/eclient.zip", bar=wget.bar_adaptive)
-        filename3 = wget.detect_filename("https://libs-pi.vercel.app/eclient.zip")
-        os.system('powershell -Command "Expand-Archive -LiteralPath eclient.zip -DestinationPath eClient"')
-        os.system("del eclient.zip")
-        wget.download("https://libs-pi.vercel.app/Install-Font.ps1", bar=wget.bar_adaptive)
-        wget.download("https://libs-pi.vercel.app/command.py", bar=wget.bar_adaptive)
-        filename5= wget.detect_filename("https://libs-pi.vercel.app/command.py")
-        filename4 = wget.detect_filename("https://libs-pi.vercel.app/Install-Font.ps1")
-        os.system('move "Install-Font.ps1" "eClient/fonts"')
-        os.chdir(r"C:\\Users\\{}\\AppData\\Roaming\\eClient\fonts".format(usr_accnt))
-        os.system("powershell -executionpolicy bypass -File .\Install-Font.ps1 .\SF Pro Display Regular.otf")
-        os.system("powershell -executionpolicy bypass -File .\Install-Font.ps1 .\SF Pro Display Bold.otf")
-        os.chdir(r"C:\\Users\\{}\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\minecraft_launcher_lib\\".format(usr_accnt))
-        os.system("del command.py")
-        os.chdir(r"C:\\Users\\{}\\AppData\\Roaming\\".format(usr_accnt))
-        shutil.move('command.py', 'C:\\Users\\{}\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\minecraft_launcher_lib\\'.format(usr_accnt))
-        print("eClient installed.")
-        print("Creating shortcut...")
-        damn = "C:\\Windows\\System32\\shortcut.exe"
-        isExist = os.path.exists(damn)
-        
-        if isExist == True:
-            os.chdir(r"C:\\Users\\{}\\Desktop\\ ".format(usr_accnt))
-            google = "C:\\Users\\{}\\AppData\\Roaming\\eClient".format(usr_accnt)
-            os.system(f"shortcut.exe /F:eClient.lnk /A:C /T:{google}\\eclient.pyw /W:{google} /I:{google}\\mc.ico")
-        elif isExist == False:
-            wget.download("https://libs-pi.vercel.app/Shortcut.exe", bar=wget.bar_adaptive)
-            shutil.move('shortcut.exe', 'C:\\Windows\\System32'.format(usr_accnt))
-            google = "C:\\Users\\{}\\AppData\\Roaming\\eClient".format(usr_accnt)
-            os.chdir(r"C:\\Users\\{}\\Desktop\\ ".format(usr_accnt))
-            os.system(f"shortcut.exe /F:eClient.lnk /A:C /T:{google}\\eclient.pyw /W:{google} /I:{google}\\mc.ico")
-        os.system("pause")
+    os.chdir(r"C:\\Users\\{}\\AppData\\Roaming\\".format(usr_accnt))
+    wget.download("https://libs-pi.vercel.app/eclient.zip", bar=wget.bar_adaptive)
+    filename3 = wget.detect_filename("https://libs-pi.vercel.app/eclient.zip")
+    os.system('powershell -Command "Expand-Archive -LiteralPath eclient.zip -DestinationPath eClient"')
+    os.system("del eclient.zip")
+    print("")
+    important = input("Do you want to install the SF Pro Display Font automatically? (requires admin rights) (Y/N): ")
+    if important.upper() == "Y":
+        os.mkdir(r"C:\\Users\\{}\\AppData\\Roaming\\eClient\\root".format(usr_accnt))
+        os.chdir(r"C:\\Users\\{}\\AppData\\Roaming\\eClient\\root".format(usr_accnt))
+        wget.download("https://libs-pi.vercel.app/sf.ttf", bar=wget.bar_adaptive)
+        wget.download("https://libs-pi.vercel.app/sfb.ttf", bar=wget.bar_adaptive)
+        wget.download("https://libs-pi.vercel.app/FontReg.exe", bar=wget.bar_adaptive)
+        wget.download("https://libs-pi.vercel.app/FontReg.md5", bar=wget.bar_adaptive)
+        os.system("FontReg.exe /copy")
+    else:
+        pass
+    os.chdir(r"C:\\Users\\{}\\AppData\\Roaming\\".format(usr_accnt))
+    print("eClient installed.")
+    print("Creating shortcut...")
+    google = "C:\\Users\\{}\\AppData\\Roaming\\eClient".format(usr_accnt)
+    wget.download("https://libs-pi.vercel.app/Shortcut.exe", bar=wget.bar_adaptive)
+    shutil.move('Shortcut.exe', 'C:\\Users\\{}\\Desktop'.format(usr_accnt))
+    os.chdir("C:\\Users\\{}\\Desktop".format(usr_accnt))
+    os.system(f"Shortcut.exe /F:eClient.lnk /A:C /T:{google}\\eclient.pyw /W:{google} /I:{google}\\mc.ico")
+    os.system('del Shortcut.exe')
+    os.system('cls')
+    print("eClient has installed itself onto the machine succesfully.")
+    os.system("pause")
 
-    elif not dire == "":
+'''    elif not dire == "":
         print("Installing eClient to {}...".format(dire))
         os.chdir(dire)
         wget.download("https://libs-pi.vercel.app/eclient.zip", bar=wget.bar_adaptive)
@@ -76,22 +68,18 @@ def end():
         print("Creating shortcut...")
         damn = "C:\\Windows\\System32\\shortcut.exe"
         isExist = os.path.exists(damn)
-        if isExist == True:
-            google = "{}\\eClient".format(dire)
-            os.chdir(r"C:\\Users\\{}\\Desktop\\ ".format(usr_accnt))
-            os.system(f"shortcut.exe /F:eClient.lnk /A:C /T:{google}\\eclient.pyw /W:{google} /I:{google}\\mc.ico")
-        elif isExist == False:
-            wget.download("https://libs-pi.vercel.app/Shortcut.exe", bar=wget.bar_adaptive)
-            shutil.move('shortcut.exe', 'C:\\Windows\\System32'.format(usr_accnt))
-            google = "{}\\eClient".format(dire)
-            os.chdir(r"C:\\Users\\{}\\Desktop\\ ".format(usr_accnt))
-            os.system(f"shortcut.exe /F:eClient.lnk /A:C /T:{google}\\eclient.pyw /W:{google} /I:{google}\\mc.ico")
-        os.system("pause")
+        wget.download("https://libs-pi.vercel.app/Shortcut.exe", bar=wget.bar_adaptive)
+        shutil.move('Shortcut.exe', 'C:\\Users\\{}\\Desktop'.format(usr_accnt))
+        google = "{}\\eClient".format(dire)
+        os.chdir("C:\\Users\\{}\\Desktop".format(usr_accnt))
+        os.system(f"Shortcut.exe /F:eClient.lnk /A:C /T:{google}\\eclient.pyw /W:{google} /I:{google}\\mc.ico")
+        os.system("del Shortcut.exe")'''
+
 
 
 def java():
     inst = input("Do you have Java 17 installed? (Y/N): ")
-    if inst == "Y":
+    if inst.lower() == "y":
         print("Ok.")
         end()
     else:
@@ -111,7 +99,7 @@ def dep():
     java()
 
 py = input("Do you have Python 3.10 installed? (Y/N): ")
-if py == "Y":
+if py.lower() == "y":
     print("Ok, installing packages.")
     dep()
 else:
@@ -121,7 +109,9 @@ else:
     os.system(f"{filename}")
     time.sleep(5)
     os.remove(f"{filename}")
-    dep()
+    print("Restarting program....")
+    os.system("eClient-v1.7-x64-Installer")
+    exit()
     
 
 '''if os_name.startswith("Linux"):
