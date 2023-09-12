@@ -27,15 +27,15 @@ usr_accnt = getpass.getuser()
 if os.path.exists("C:\\users\\{}\\AppData\\Roaming\\.minecraft"):
     mc_dir = r"C:\\users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)
 else:
-    mc_dir = r"C:\\users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)
+    mc_dir = r"{}\.minecraft".format(currn_dir)
 os_name = platform.platform()
 def update():
     os.system("python update.py")
     sys.exit(0)
     
 def con():
+    pass
     top.destroy()
-    root.wm_attributes("-disabled", False)
 response = requests.get("https://api.github.com/repos/v-pun215/eClient/releases/latest")
 lv = response.json()["name"]
 if not lv == "1.5":
@@ -119,10 +119,10 @@ elif os_name.startswith("Windows"):
                     {
                         "fps_boost_selected" : False,
                         "tor_enabled_selected" : False,
-                        "allocated_ram_selected" : None
+                        "allocated_ram_selected" : 3000
                     }
                 ],
-                "allocated_ram" : None,
+                "allocated_ram" : 3000,
                 "jvm-args": None,
                 "executablePath": r"C:\\Program Files\\BellSoft\\LibericaJDK-17\\bin\\java",
                 "ramlimiterExceptionBypassed": False,
@@ -200,9 +200,8 @@ background = canvas.create_image(
     image=background_img)
 
 
-if not lv == "v1.6":
+if not lv == "v1.7":
     print("Update available!")
-    root.wm_attributes("-disabled", True)
     top= Toplevel(root)
     top.geometry("450x200")
     top.title("Update Available: {}".format(lv))
@@ -342,7 +341,7 @@ def checksettings():
                 f.write("taskkill /f /im python.exe\n")  #frees up cpu and memory
                 f.write("yeah.cmd")
                 f.close()
-            root.after(5000, lambda: t2.start())
+            root.after(23000, lambda: t2.start())
 
 
 
@@ -353,8 +352,8 @@ window_running = True
 pb1.start()
 checksettings()
 #root.after(20000, lambda: pb1.stop())
-root.after(5000, lambda: root.withdraw())
-root.after(7000, lambda: root.destroy())
+root.after(24000, lambda: root.withdraw())
+root.after(30000, lambda: root.destroy())
 
 
 
@@ -365,4 +364,3 @@ try:
     root.mainloop()
 except KeyboardInterrupt:
     print("Program Exited")
-

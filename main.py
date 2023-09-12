@@ -179,8 +179,7 @@ elif OS.startswith("Windows"):
                     {
                         "username": None,
                         "AUTH_TYPE": None,
-                        "UUID": None,
-                        "Password": None
+                        "UUID": None
                     }
                 ],
                 "PC-info" : [
@@ -229,7 +228,6 @@ os_name = data["PC-info"][0]["OS"]
 mc_home = data["Minecraft-home"]
 username = data["User-info"][0]["username"]
 uid = data["User-info"][0]["UUID"]
-password = data["User-info"][0]["Password"]
 accessToken = data["accessToken"]
 mc_dir = data["Minecraft-home"]
 auth_type = data["User-info"][0]["AUTH_TYPE"]
@@ -443,6 +441,7 @@ class eClient():
                 # Do the login with refresh token
                 try:
                     account_informaton = minecraft_launcher_lib.microsoft_account.complete_refresh(cl, se, re, refresh_token)
+                    global msaoptions
                     msaoptions = {
                         "username": account_informaton["name"],
                         "uuid": account_informaton["id"],
@@ -755,7 +754,17 @@ class eClient():
                 #width=20,
                 command=self.handle_run,
                 bootstyle="info-outline")
-
+        else:
+            self.b3 = Button(
+                self.frame1,
+                #image = self.img3,
+                text = "Login in with accnt",
+                #background="green",
+                #foreground="white",
+                #height=20,
+                #width=20,
+                command=self.importantboi,
+                bootstyle="info-outline")
         if connected == True:
 
             self.b3.place(
@@ -1223,7 +1232,7 @@ class eClient():
             font = ("SF Pro Display", int(12.0)))
         self.canvas11.create_text(
             508.0, 320.0,
-            text = "v-pun215 for eClient (me)",
+            text = "v-pun215 for eClient",
             fill = "white",
             font = ("SF Pro Display", int(12.0)))
         self.canvas11.create_text(
@@ -1233,7 +1242,7 @@ class eClient():
             font = ("SF Pro Display", int(20.0), "bold"))
         self.canvas11.create_text(
             508.0, 420.0,
-            text = "Version 1.5",
+            text = "Version 1.7",
             fill = "white",
             font = ("SF Pro Display", int(12.0)))
         self.canvas11.create_text(
@@ -1776,12 +1785,13 @@ class eClient():
                                 re = "https://eclient-done.vercel.app/"
                                 cl = "e9ce99a1-de8e-45a3-99e1-b1d3923d2621"
                                 account_informaton = minecraft_launcher_lib.microsoft_account.complete_refresh(cl, se, re, refresh_token)
-                                
                                 msaoptions = {
                                     "username": account_informaton["name"],
                                     "uuid": account_informaton["id"],
                                     "token": account_informaton["access_token"]
                                 }
+                                
+                                
                             # Show the window if the refresh token is invalid
                             except minecraft_launcher_lib.exceptions.InvalidRefreshToken:
                                 pass
@@ -1977,12 +1987,13 @@ class eClient():
                                 re = "https://eclient-done.vercel.app/"
                                 cl = "e9ce99a1-de8e-45a3-99e1-b1d3923d2621"
                                 account_informaton = minecraft_launcher_lib.microsoft_account.complete_refresh(cl, se, re, refresh_token)
-                                
                                 msaoptions = {
                                     "username": account_informaton["name"],
                                     "uuid": account_informaton["id"],
                                     "token": account_informaton["access_token"]
                                 }
+                                
+                                
                             # Show the window if the refresh token is invalid
                             except minecraft_launcher_lib.exceptions.InvalidRefreshToken:
                                 pass
@@ -2185,12 +2196,13 @@ class eClient():
                                 re = "https://eclient-done.vercel.app/"
                                 cl = "e9ce99a1-de8e-45a3-99e1-b1d3923d2621"
                                 account_informaton = minecraft_launcher_lib.microsoft_account.complete_refresh(cl, se, re, refresh_token)
-                                
                                 msaoptions = {
                                     "username": account_informaton["name"],
                                     "uuid": account_informaton["id"],
                                     "token": account_informaton["access_token"]
                                 }
+                                
+                                
                             # Show the window if the refresh token is invalid
                             except minecraft_launcher_lib.exceptions.InvalidRefreshToken:
                                 pass
