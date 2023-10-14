@@ -13,6 +13,15 @@ Download Installer from [here](https://github.com/v-pun215/eClient/releases/down
 
 Based on [PyCraft by shasankp000](https://github.com/shasankp000/PyCraft).
 
+## New Website!
+Check it out at [https://eclient.vpun215.tech](https://eclient.vpun215.tech).
+
+You can see the [archived source code](https://github.com/v-pun215/eClient-website) of the old one as well.
+
+This change comes after I acquired the domain [vpun215.tech](https://vpun215.tech).
+
+That's my portfolio btw.
+
 ## Have A Potato PC?
 Check out [eClient Lite](https://github.com/v-pun215/eClient-Lite).
 
