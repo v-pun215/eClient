@@ -1810,16 +1810,21 @@ class eClient():
             if self.runtime_ver.startswith("Vanilla"): #Checking for selected version before running minecraft.
                 if self.login_method == "Microsoft Account":
                     try:
-                        self.mc_ver = data["selected-version"].strip("Vanilla: ")
+                        if data["selected-version"].startswith("Vanilla: snapshot"):
+                            print(data["selected-version"])
+                            mcdonalds = data["selected-version"]
+                            self.mc_ver = mcdonalds.partition(' ')[2]
+                            print(self.mc_ver)
+                        else:
+                            self.mc_ver = data["selected-version"].strip("Vanilla: ")
                         self.detected_ver = ""  # yet another small hack
                         if connected == True:
                             if self.mc_ver.startswith("release"):
                                 self.detected_ver = self.mc_ver.strip("release ")
-                            elif self.mc_ver.startswith("snapshot"):
-                                split_string = self.mc_ver.split(' ')
-                                new_string_list = split_string[1:]
-                                new_string = ' '.join(new_string_list)
-                                self.detected_ver = new_string
+                            elif self.mc_ver.startswith("snapshot "):
+                                print(self.mc_ver)
+                                self.detected_ver = self.mc_ver.partition(' ')[2]
+                                print(self.detected_ver)
                         elif connected == False:
                             self.detected_ver = self.mc_ver
 
@@ -1854,18 +1859,24 @@ class eClient():
                     try:
                         self.usr = data["User-info"][0]["username"]
                         self.pwd = self.pwd1
-                        self.mc_ver = data["selected-version"].strip("Vanilla: ")
+
+                        if data["selected-version"].startswith("Vanilla: snapshot"):
+                            print(data["selected-version"])
+                            mcdonalds = data["selected-version"]
+                            self.mc_ver = mcdonalds.partition(' ')[2]
+                            print(self.mc_ver)
+                        else:
+                            self.mc_ver = data["selected-version"].strip("Vanilla: ")
                         self.detected_ver = ""
 
                         # This is done to get only the version number, cutting out the rest of the string including whitespace
                         if connected == True:
                             if self.mc_ver.startswith("release"):
                                 self.detected_ver = self.mc_ver.strip("release ")
-                            elif self.mc_ver.startswith("snapshot"):
-                                split_string = self.mc_ver.split(' ')
-                                new_string_list = split_string[1:]
-                                new_string = ' '.join(new_string_list)
-                                self.detected_ver = new_string
+                            elif self.mc_ver.startswith("snapshot "):
+                                print(self.mc_ver)
+                                self.detected_ver = self.mc_ver.partition(' ')[2]
+                                print(self.detected_ver)
                         elif connected == False:
                             self.detected_ver = self.mc_ver
 
@@ -1918,16 +1929,21 @@ class eClient():
                     try:
                         self.usr = data["User-info"][0]["username"]
                         self.pwd = self.pwd1
-                        self.mc_ver = data["selected-version"].strip("Vanilla: ")
+                        if data["selected-version"].startswith("Vanilla: snapshot"):
+                            print(data["selected-version"])
+                            mcdonalds = data["selected-version"]
+                            self.mc_ver = mcdonalds.partition(' ')[2]
+                            print(self.mc_ver)
+                        else:
+                            self.mc_ver = data["selected-version"].strip("Vanilla: ")
 
                         if connected == True:
                             if self.mc_ver.startswith("release"):
                                 self.detected_ver = self.mc_ver.strip("release ")
-                            elif self.mc_ver.startswith("snapshot"):
-                                split_string = self.mc_ver.split(' ')
-                                new_string_list = split_string[1:]
-                                new_string = ' '.join(new_string_list)
-                                self.detected_ver = new_string
+                            elif self.mc_ver.startswith("snapshot "):
+                                print(self.mc_ver)
+                                self.detected_ver = self.mc_ver.partition(' ')[2]
+                                print(self.detected_ver)
                         elif connected == False:
                             self.detected_ver = self.mc_ver
 
@@ -1974,15 +1990,20 @@ class eClient():
                 elif self.login_method == "ElyBy Login":
                     self.ely_authenticate()
 
-                    self.mc_ver = data["selected-version"].strip("Vanilla: ")
+                    if data["selected-version"].startswith("Vanilla: snapshot"):
+                            print(data["selected-version"])
+                            mcdonalds = data["selected-version"]
+                            self.mc_ver = mcdonalds.partition(' ')[2]
+                            print(self.mc_ver)
+                    else:
+                        self.mc_ver = data["selected-version"].strip("Vanilla: ")
 
                     if self.mc_ver.startswith("release"):
                         self.detected_ver = self.mc_ver.strip("release ")
-                    elif self.mc_ver.startswith("snapshot"):
-                        split_string = self.mc_ver.split(' ')
-                        new_string_list = split_string[1:]
-                        new_string = ' '.join(new_string_list)
-                        self.detected_ver = new_string
+                    elif self.mc_ver.startswith("snapshot "):
+                        print(self.mc_ver)
+                        self.detected_ver = self.mc_ver.partition(' ')[2]
+                        print(self.detected_ver)
 
 
                     try:
