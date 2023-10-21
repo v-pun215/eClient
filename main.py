@@ -110,7 +110,9 @@ currn_dir = os.getcwd()
 if os.path.exists(r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)):
     mc_dir = r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)
 else:
-    mc_dir = r"{}\.minecraft".format(currn_dir)
+    os.mkdir(r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt))
+    mc_dir = r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)
+    
 OS = platform.platform()
 
 
@@ -167,7 +169,8 @@ if OS.startswith("Linux"):
                 "jvm-args": None,
                 "executablePath": "java",
                 "ramlimiterExceptionBypassed": False,
-                "ramlimiterExceptionBypassedSelected": False
+                "ramlimiterExceptionBypassedSelected": False,
+                "verbose": False
                 #"executablePath": r"{}/runtime/jre-legacy/linux/jre-legacy/bin/java".format(mc_dir)
             }
 
@@ -201,7 +204,8 @@ elif OS.startswith("Windows"):
                 "jvm-args": None,
                 "executablePath": r"C:\\Program Files\\BellSoft\\LibericaJDK-8\\bin\\java.exe",
                 "ramlimiterExceptionBypassed": False,
-                "ramlimiterExceptionBypassedSelected": False
+                "ramlimiterExceptionBypassedSelected": False,
+                "verbose": False
                 #"executablePath": r"{}/runtime/jre-legacy/windows/jre-legacy/bin/java".format(mc_dir)
             }
 
@@ -239,7 +243,7 @@ allocated_ram = data["allocated_ram"]
 allocated_ram_selected = data["setting-info"][0]["allocated_ram_selected"]
 ramlimiterExceptionBypassed = data["ramlimiterExceptionBypassed"]
 ramlimiterExceptionBypassedSelected = data["ramlimiterExceptionBypassedSelected"]
-
+verbose = data["verbose"]
 
 
 def reload_data():
@@ -253,6 +257,7 @@ def reload_data():
     global mc_dir
     global selected_ver
     global ramlimiterExceptionBypassed
+    global verbose
     global ramlimiterExceptionBypassedSelected
     global auth_type
     global jvm_args
@@ -285,6 +290,7 @@ def reload_data():
     allocated_ram_selected = data["setting-info"][0]["allocated_ram_selected"]
     ramlimiterExceptionBypassed = data["ramlimiterExceptionBypassed"]
     ramlimiterExceptionBypassedSelected = data["ramlimiterExceptionBypassedSelected"]
+    verbose = data["verbose"]
 
 
 
@@ -295,12 +301,12 @@ def reload_data():
 
 
 
-if os.path.exists(r"{}\.minecraft".format(currn_dir)) or os.path.exists(r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)):
+if os.path.exists(r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)):
     print("Existing minecraft installation, checking for versions...")
 
 else:
-     os.mkdir(".minecraft")
-     os.chdir(".minecraft")
+     os.mkdir(r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt))
+     os.chdir(r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt))
      os.mkdir("versions")
 
 connected = True
@@ -353,7 +359,7 @@ class eClient():
     print("-------------------------------")
     print("")'''
     def docs(self):
-        webbrowser.open('https://github.com/v-pun215/eClient')
+        webbrowser.open('https://github.com/v-pun215/eClient/wiki')
     '''def open_popup():
         top= Toplevel(self)
         top.geometry("800x550")
@@ -408,6 +414,7 @@ class eClient():
         self.custom_font2 = Font(family="SF Pro Display", size=26)
         self.custom_font3 = Font(family="SF Pro Display", size=16)
         self.custom_font4 = Font(family="SF Pro Display", size=12)
+        
 
 
 
@@ -683,8 +690,11 @@ class eClient():
             command=self.launch_modinstaller,
             bootstyle="primary")
         def mc_news():
-            webview.create_window('Minecraft Changelog', 'https://changelog-eclient.earthsoft.me')
+            import threading
+            webview.create_window('Minecraft Changelog', 'https://changelog-eclient.earthsoft.me/')
             webview.start()
+            server1.join()
+            server2.join()
         def lunar():
             subprocess.call([r'll.cmd'])
             #self.img3 = PhotoImage(file = f"img/img4.png")
@@ -755,6 +765,8 @@ class eClient():
                 command=self.handle_run,
                 bootstyle="info-outline")
         else:
+            def importantboi():
+                showerror(message="Please login to your account first. Learn more: https://github.com/v-pun215/eClient/wiki")
             self.b3 = Button(
                 self.frame1,
                 #image = self.img3,
@@ -763,7 +775,7 @@ class eClient():
                 #foreground="white",
                 #height=20,
                 #width=20,
-                command=self.importantboi,
+                command=importantboi,
                 bootstyle="info-outline")
         if connected == True:
 
@@ -898,12 +910,14 @@ class eClient():
         if os.path.exists(r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)):
             self.mc_dir = r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)
         else:
-            self.mc_dir = r"{}/.minecraft".format(currn_dir)
+            os.mkdir(r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt))
+            self.mc_dir = r"C:\\Users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)
         
 
 
         #global variables
         self.cb1 = ""
+        self.verb1= BooleanVar()
 
         self.cb2 = ""
         self.s1 = ""
@@ -1242,7 +1256,7 @@ class eClient():
             font = ("SF Pro Display", int(20.0), "bold"))
         self.canvas11.create_text(
             508.0, 420.0,
-            text = "Version 1.7",
+            text = "Version 1.8",
             fill = "white",
             font = ("SF Pro Display", int(12.0)))
         self.canvas11.create_text(
@@ -1271,7 +1285,7 @@ class eClient():
         
 
         self.canvas6.create_text(
-            220.0, 55.0,
+            250.0, 55.0,
             text = "Bypass RAM Limiter",
             fill = "white",
             font = ("SF Pro Display", int(20.0), "bold"))
@@ -1282,6 +1296,11 @@ class eClient():
             text = "JVM Arguments",
             fill = "white",
             font = ("SF Pro Display", int(20.0), "bold"))
+        self.canvas6.create_text(
+            220.0, 285.0,
+            text = "Verbose Mode",
+            fill = "white",
+            font = ("SF Pro Display", int(20.0), "bold"))
 
 
         self.entry2 = Entry(
@@ -1290,6 +1309,14 @@ class eClient():
             bg = "#c4c4c4",
             font = ("SF Pro Display", 20),
             highlightthickness = 0)
+        if verbose == True:
+            self.verb1 = BooleanVar(value=True)
+        else:
+            self.verb1 = BooleanVar(value=False)
+        
+        self.verb = Checkbutton(self.window_t, bootstyle="success-round-toggle", onvalue=True, offvalue=False, command=self.verbcheck, variable=self.verb1)
+        self.verb.place(x=600, y=280.0)
+        
         '''self.canvas6.create_text(
             220.0, 300.0,
             text = "Dark Mode",
@@ -1312,14 +1339,17 @@ class eClient():
             self.j1 = jvm_args
             self.entry2.insert(0, f"{self.j1}")
 
+        elif self.login_method == "Microsoft Account":
+            self.j1 = jvm_args
+            self.entry2.insert(0, f"{self.j1}")
+
 
         self.entry2.place(
             x = 120.0, y = 167.0,
             width = 547.0,
             height = 62)
 
-
-
+        
 
         if ramlimiterExceptionBypassedSelected== True:
             self.cb1 = StringVar(value="selected")
@@ -1542,7 +1572,19 @@ class eClient():
             json.dump(data, js_set, indent=4)
             js_set.close()'''
 
+    def verbcheck(self):
+            global verbose
+            if self.verb1.get() == True:
+                verbose = True
 
+            elif self.verb1.get() == False:
+                verbose = False
+
+            data["verbose"] = verbose
+
+            with open("settings.json", "w") as js_set:
+                json.dump(data, js_set, indent=4)
+                js_set.close()
     def check2(self):
         global ramlimiterExceptionBypassed
         global ramlimiterExceptionBypassedSelected
@@ -1553,6 +1595,7 @@ class eClient():
         elif self.cb1.get() == "deselected":
             ramlimiterExceptionBypassed = False
             ramlimiterExceptionBypassedSelected = False
+    
 
 
 
@@ -2518,10 +2561,16 @@ class eClient():
             if self.selected_ver.startswith("release"):
                     self.detected_ver1 = self.selected_ver.strip("release ")
             elif self.selected_ver.startswith("snapshot"):
-                    self.detected_ver1 = self.selected_ver.strip("snapshot ")
+                    split_string = self.selected_ver.split(' ')
+                    new_string_list = split_string[1:]
+                    new_string = ' '.join(new_string_list)
+                    self.detected_ver1 = new_string
+                    print(self.detected_ver1)
 
-            showinfo(title="Installation started...", message=f"Installing minecraft version {self.selected_ver}")
+            #showinfo(title="Installation started...", message=f"Installing minecraft version {self.selected_ver}")
+            print(f"Installing {self.detected_ver1}")
             minecraft_launcher_lib.install.install_minecraft_version(self.detected_ver1,self.mc_dir, callback=self.callback)
+            
 
             data["selected-version"] = "Vanilla:" + " " + f"{self.selected_ver}"
             with open("settings.json", "w") as f:
@@ -2994,25 +3043,32 @@ class eClient():
         '''Initiates a second window consisting of the download progressbar, while hiding the previous one.'''
 
         def close():
-            '''restores the minimized original window and cancels the download.'''
+            '''restores the minimized original window and cancels the download.
             res = askquestion(title='Abort?', message="Really cancel the download?")
             if res == "yes":
                 try:
                     if self.dl_thread.is_alive():
-                        self.p1.deiconify()
                         self.window.deiconify()
                         self.pw.destroy()
+                        raise KeyboardInterrupt
+                        self.dl_thread.join()
+                        self.t2.join()
+                        print("Done. Closed.")
 
 
                 except tk.TclError:
                     print("Download window closed.")
             elif res == "no":
-                pass
+                pass'''
+            pass
 
 
         self.window.withdraw()
         self.pw = tk.Toplevel()
-        self.pw.geometry("1024x600")
+        def disable_event():
+            pass
+        self.pw.protocol("WM_DELETE_WINDOW", disable_event)
+        self.pw.geometry("375x150")
         self.pw.title("Downloading...")
         if os_name.startswith("Windows"):
             self.pw.iconbitmap("icon.ico")
@@ -3027,6 +3083,14 @@ class eClient():
             highlightthickness = 0,
             relief = "ridge")
         self.canvas1.place(x = 0, y = 0)
+        t2nine1 = self.selected_ver.capitalize()
+        textynine = f"Downloading {t2nine1}"
+        
+        self.canvas1.create_text(
+                200, 80,
+                text = textynine,
+                fill = "white",
+                font = ("SF Pro Display", int(13.0),))
         try:
             self.pw.wm_protocol("WM_DELETE_WINDOW", lambda:close())
         except tk.TclError():
@@ -3043,24 +3107,10 @@ class eClient():
         self.output = self.callback["setStatus"]
 
         print(type(self.output))
+        
 
-        self.l1 = Label(self.pw)
-        self.l1.place(x=0, y=0)
-        self.player = tkvideo(r"{}/img/prog.mp4".format(currn_dir), self.l1, loop=1, size=(1024,500))
-
-        self.b4 = Button(self.pw, text="Stop Download", command = close)
-        self.b4.place(x=810, y=570)
-
-        self.l2 = Label(self.pw)
-        self.l2.config(text = SpeedTracker().get_download_speed(), background="#3a3a3a", foreground="white")
-        self.l2.update()
-        self.l2.place(x=580,y=570)
-
-        self.pb = Progressbar(self.pw, value=0, bootstyle="success-striped", orient='horizontal', length=280, mode="determinate")
-        self.pb.place(x=10, y=570)
-
-        self.t1 = Thread(target=lambda: self.player.play())
-        self.t1.start()
+        self.pb = Progressbar(self.pw, bootstyle="success", orient='horizontal', length=280, mode="indeterminate")
+        self.pb.place(x=50, y=140)
 
 
     def stop_download(self):
@@ -3072,38 +3122,29 @@ class eClient():
 
     def handle_progress(self):
         '''handles the progress bar increment'''
-        self.pb.start(1)
+        self.pb.start()
 
     def handle_download(self):
         '''Starts the download thread'''
         self.start_download()
 
-        q1 = askquestion(title="Start?", message="Start Downloading?")
-        if q1 == "yes":
+        
+        try:
+            self.t2 = Thread(target=self.handle_progress)
+            self.t2.start()
 
-            try:
-                self.t2 = Thread(target=self.handle_progress)
-                self.t2.start()
+            self.dl_thread = Thread(target=self.download) # Download thread
+            self.dl_thread.start()
 
-                self.dl_thread = Thread(target=self.download) # Download thread
-                self.dl_thread.start()
-
-                self.monitor(self.dl_thread)
-            except KeyboardInterrupt:
-                self.dl_thread.join(timeout=4.0)
-                self.t2.join(timeout=6.0)
-                self.t1.join(timeout=8.0)
+            self.monitor(self.dl_thread)
+        except KeyboardInterrupt:
+            self.dl_thread.join(timeout=4.0)
+            self.t2.join(timeout=6.0)
 
 
-            print("Download Started.")
+        print("Download Started.")
 
-        elif q1 == "no":
-            try:
-                self.stop_download()
-                showinfo(title="Aborted", message="Cancelled the download" )
-            except tk.TclError:
-                self.stop_download()
-                showinfo(title="Aborted", message="Cancelled the download" )
+       
 
 
     def monitor(self, dl_thread):
@@ -3111,7 +3152,7 @@ class eClient():
         if self.dl_thread.is_alive():
             self.window.after(100, lambda: self.monitor(self.dl_thread))
         else:
-            showinfo(title="Success!", message="Download Completed.")
+            print("Install finished")
             self.stop_download()
 
 

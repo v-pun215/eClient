@@ -7,7 +7,7 @@ from tkinter.ttk import Progressbar
 from tkinter.messagebox import askquestion, showinfo
 from tkinter import Label, Canvas, PhotoImage
 import tkinter as tk
-import sys
+import sys, subprocess
 import os
 import time, requests
 from threading import Thread
@@ -24,10 +24,9 @@ ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 first=False
 currn_dir = os.getcwd()
 usr_accnt = getpass.getuser()
-if os.path.exists("C:\\users\\{}\\AppData\\Roaming\\.minecraft"):
-    mc_dir = r"C:\\users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)
-else:
-    mc_dir = r"{}\.minecraft".format(currn_dir)
+
+mc_dir = r"C:\\users\\{}\\AppData\\Roaming\\.minecraft".format(usr_accnt)
+
 os_name = platform.platform()
 def update():
     os.system("python update.py")
@@ -126,7 +125,8 @@ elif os_name.startswith("Windows"):
                 "jvm-args": None,
                 "executablePath": r"C:\\Program Files\\BellSoft\\LibericaJDK-17\\bin\\java",
                 "ramlimiterExceptionBypassed": False,
-                "ramlimiterExceptionBypassedSelected": False
+                "ramlimiterExceptionBypassedSelected": False,
+                "verbose": False
                 #"executablePath": r"{}/runtime/jre-legacy/windows/jre-legacy/bin/java".format(mc_dir)
             }
 
@@ -156,13 +156,27 @@ fps_boost_selected = data["setting-info"][0]["fps_boost_selected"]
 tor_enabled_selected = data["setting-info"][0]["tor_enabled_selected"]
 ramlimiterExceptionBypassed = data["ramlimiterExceptionBypassed"]
 ramlimiterExceptionBypassedSelected = data["ramlimiterExceptionBypassedSelected"]
+verbose = data["verbose"]
 
 style = Style(theme="flatly")
 
-
+isit = None
+if verbose == True:
+    isit=False
+elif verbose == False:
+    isit=True
 root = style.master
-root.configure(bg = "#3a3a3a")
-root.title("eClient Updater")
+t2 = Thread(target=lambda: subprocess.call("main.bat", shell=isit))
+f = open("first.txt", "r")
+fr = f.read()
+if fr == "no":
+    t2.start()
+    root.withdraw()
+    root.destroy()
+else:
+    pass
+
+root.title("eClient Loader")
 root.iconbitmap("mc.ico")
 root.geometry("761x403+140+50")
 
@@ -200,7 +214,7 @@ background = canvas.create_image(
     image=background_img)
 
 
-if not lv == "v1.7":
+'''if not lv == "v1.7":
     print("Update available!")
     top= Toplevel(root)
     top.geometry("450x200")
@@ -209,7 +223,7 @@ if not lv == "v1.7":
     Label(top, text= "Version {} is available. Would you like to download it?".format(lv), font=("SF Pro Display", 11)).place(x=10,y=90)
     Button(top,text = "Yes", bootstyle="success-outline", command=update).place(x=150, y=140)  
     Button(top,text = "No", bootstyle="danger-outline", command=con).place(x=250, y=140)  
-
+'''
 
 if not os.path.exists(r"{}/settings.json".format(currn_dir)):
     c1 = Label(
@@ -294,10 +308,12 @@ canvas.create_text(
 
 pb1 = Progressbar(root, value=0, style='info.Horizontal.TProgressbar', length=300, mode="indeterminate")
 pb1.place(x=250, y=400)        
-
+def open1():
+    CREATE_NO_WINDOW = 0x08000000
+    subprocess.call("main.bat", creationflags=CREATE_NO_WINDOW)
 
 t1 = Thread(target=lambda: os.system("./main.sh"))
-t2 = Thread(target=lambda: os.system("main.bat"))
+t2 = Thread(target=open1)
 #t3 = Thread(target=lambda: v1.play())
 
 
@@ -352,6 +368,10 @@ window_running = True
 pb1.start()
 checksettings()
 #root.after(20000, lambda: pb1.stop())
+f = open("first.txt", "w")
+f.write("no")
+f.close()
+
 root.after(24000, lambda: root.withdraw())
 root.after(30000, lambda: root.destroy())
 
