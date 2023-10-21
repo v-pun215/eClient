@@ -170,7 +170,7 @@ if OS.startswith("Linux"):
                 "executablePath": "java",
                 "ramlimiterExceptionBypassed": False,
                 "ramlimiterExceptionBypassedSelected": False,
-                "verbose": False
+                "verbose": True
                 #"executablePath": r"{}/runtime/jre-legacy/linux/jre-legacy/bin/java".format(mc_dir)
             }
 
@@ -205,7 +205,7 @@ elif OS.startswith("Windows"):
                 "executablePath": r"C:\\Program Files\\BellSoft\\LibericaJDK-8\\bin\\java.exe",
                 "ramlimiterExceptionBypassed": False,
                 "ramlimiterExceptionBypassedSelected": False,
-                "verbose": False
+                "verbose": True
                 #"executablePath": r"{}/runtime/jre-legacy/windows/jre-legacy/bin/java".format(mc_dir)
             }
 
@@ -1816,7 +1816,10 @@ class eClient():
                             if self.mc_ver.startswith("release"):
                                 self.detected_ver = self.mc_ver.strip("release ")
                             elif self.mc_ver.startswith("snapshot"):
-                                self.detected_ver = self.mc_ver.strip("snapshot ")
+                                split_string = self.mc_ver.split(' ')
+                                new_string_list = split_string[1:]
+                                new_string = ' '.join(new_string_list)
+                                self.detected_ver = new_string
                         elif connected == False:
                             self.detected_ver = self.mc_ver
 
@@ -1859,7 +1862,10 @@ class eClient():
                             if self.mc_ver.startswith("release"):
                                 self.detected_ver = self.mc_ver.strip("release ")
                             elif self.mc_ver.startswith("snapshot"):
-                                self.detected_ver = self.mc_ver.strip("snapshot ")
+                                split_string = self.mc_ver.split(' ')
+                                new_string_list = split_string[1:]
+                                new_string = ' '.join(new_string_list)
+                                self.detected_ver = new_string
                         elif connected == False:
                             self.detected_ver = self.mc_ver
 
@@ -1918,7 +1924,10 @@ class eClient():
                             if self.mc_ver.startswith("release"):
                                 self.detected_ver = self.mc_ver.strip("release ")
                             elif self.mc_ver.startswith("snapshot"):
-                                self.detected_ver = self.mc_ver.strip("snapshot ")
+                                split_string = self.mc_ver.split(' ')
+                                new_string_list = split_string[1:]
+                                new_string = ' '.join(new_string_list)
+                                self.detected_ver = new_string
                         elif connected == False:
                             self.detected_ver = self.mc_ver
 
@@ -1970,7 +1979,10 @@ class eClient():
                     if self.mc_ver.startswith("release"):
                         self.detected_ver = self.mc_ver.strip("release ")
                     elif self.mc_ver.startswith("snapshot"):
-                        self.detected_ver = self.mc_ver.strip("snapshot ")
+                        split_string = self.mc_ver.split(' ')
+                        new_string_list = split_string[1:]
+                        new_string = ' '.join(new_string_list)
+                        self.detected_ver = new_string
 
 
                     try:

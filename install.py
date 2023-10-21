@@ -4,11 +4,11 @@ import platform
 import getpass
 import time
 import wget
-import shutil, elevate
+import shutil
 
 
-
-print("-eClient Setup-")
+os.system("title eClient Installer")
+print("---eClient Installer---")
 print("Getting necessary stuff...")
 time.sleep(2)
 os_name = platform.platform()
@@ -23,6 +23,7 @@ def end():
     filename3 = wget.detect_filename("https://libs-pi.vercel.app/eclient.zip")
     os.system('powershell -Command "Expand-Archive -LiteralPath eclient.zip -DestinationPath eClient"')
     os.system("del eclient.zip")
+    print("")
     important = input("Do you want to install the SF Pro Display Font automatically? (requires admin rights) (Y/N): ")
     if important.upper() == "Y":
         os.mkdir(r"C:\\Users\\{}\\AppData\\Roaming\\eClient\\root".format(usr_accnt))
@@ -44,8 +45,7 @@ def end():
     os.system(f"Shortcut.exe /F:eClient.lnk /A:C /T:{google}\\eclient.pyw /W:{google} /I:{google}\\mc.ico")
     os.system('del Shortcut.exe')
     os.system('cls')
-    print("eClient has installed itself onto the machine successfully.")
-    
+    print("eClient has installed itself onto the machine succesfully.")
     os.system("pause")
 
 '''    elif not dire == "":
@@ -96,13 +96,11 @@ def dep():
     wget.download("https://libs-pi.vercel.app/requirements.txt", bar=wget.bar_adaptive)
     os.system("pip install -r requirements.txt")
     os.system("cls")
-    os.system("del requirements.txt")
     java()
 
 py = input("Do you have Python 3.10 installed? (Y/N): ")
 if py.lower() == "y":
     print("Ok, installing packages.")
-    time.sleep(2)
     dep()
 else:
     print("Installing Python 3.10...")
@@ -111,7 +109,9 @@ else:
     os.system(f"{filename}")
     time.sleep(5)
     os.remove(f"{filename}")
-    dep()
+    print("Restarting program....")
+    os.system("eClient-v1.7-x64-Installer")
+    exit()
     
 
 '''if os_name.startswith("Linux"):
