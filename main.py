@@ -2,6 +2,7 @@ from tkinter import Canvas, PhotoImage, Entry, Tk, StringVar, DoubleVar
 from tkinter import Button as Button1
 from tkinter import Label as Label1
 from tkinter import *
+import random, string
 import getpass
 from tkinter import ttk
 from tkinter.font import Font
@@ -1925,10 +1926,15 @@ class eClient():
                 elif self.login_method == "Offline Login":
 
                     self.generate_cracked_uid()
+                    def get_random_string(length):
+                        # choose from all lowercase letter
+                        letters = string.ascii_lowercase
+                        result_str = ''.join(random.choice(letters) for i in range(length))
+                        print("Random password generated:", result_str)
 
                     try:
                         self.usr = data["User-info"][0]["username"]
-                        self.pwd = self.pwd1
+                        self.pwd = get_random_string(10)
                         if data["selected-version"].startswith("Vanilla: snapshot"):
                             print(data["selected-version"])
                             mcdonalds = data["selected-version"]
@@ -2788,6 +2794,7 @@ class eClient():
 
     def save_acc(self):
         self.u1 = self.entry0.get()
+        showinfo(title="Account saved", message="Please restart eClient to see changes.")
 
         if connected == True:
 
