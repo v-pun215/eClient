@@ -1,17 +1,16 @@
 
-# eClient
-
-[![justforfunnoreally.dev badge](https://img.shields.io/badge/justforfunnoreally-dev-9ff)](https://justforfunnoreally.dev)
+<h1 align="center">eClient</h1>
 
 ![260288489-08c52dcf-a60a-4e62-8350-7257f2cdcca4-modified](https://github.com/v-pun215/eClient/assets/67716965/1d990031-e88f-4956-a086-54b5b047e5ef)
 
-
+[![justforfunnoreally.dev badge](https://img.shields.io/badge/justforfunnoreally-dev-9ff)](https://justforfunnoreally.dev)
 
 A Minecraft Launcher written in Python using Tkinter.
 
-Download Installer from [here](https://github.com/v-pun215/eClient/releases/download/v1.6/eClient-v1.6-x64-Installer.exe).
-
 Based on [PyCraft by shasankp000](https://github.com/shasankp000/PyCraft).
+
+## Wiki
+Check out the [eClient Wiki](https://github.com/v-pun215/eClient/wiki), which has all the updated information on how to run Minecraft like you want to!
 
 ## New Website!
 Check it out at [https://eclient.vpun215.tech](https://eclient.vpun215.tech).
@@ -20,23 +19,13 @@ You can see the [archived source code](https://github.com/v-pun215/eClient-websi
 
 This change comes after I acquired the domain [vpun215.tech](https://vpun215.tech).
 
-That's my portfolio btw.
-
-## Have A Potato PC?
-Check out [eClient Lite](https://github.com/v-pun215/eClient-Lite).
-
-
-
-
-
 ## Project Overview
-This launcher aims to be the best launcher (that I can code) built for Windows 10/11.
+This launcher aims to be the best launcher (in Python) built for Windows.
 
 It has many features including a Mod Installer.
 
 This launcher downloads Minecraft Libraries from the official libraries.minecraft.net.
 
-This launcher's main goal is not to pirate the game, it's simply to port the launcher to Python :)
 ## Bugs
 A check means that the bug has been resolved.
 
@@ -44,7 +33,7 @@ A check means that the bug has been resolved.
 - [ ] Not able to login to Mojang accounts anymore (Mojang disabled the API).
 - [ ] Forge can't install and run properly (Only in versions before 1.13).
 
-**Report New Bugs in [Issues](https://github.com/v-pun215/eClient/issues).**
+**Report new bugs in [Issues](https://github.com/v-pun215/eClient/issues).**
 ## Features
 - Can install and launch all versions of Minecraft: Java Edition (starting from 1.0).
 - Can install mods (from Modrinth) directly from the launcher.
@@ -76,7 +65,8 @@ Microsoft Defender should not report it as a virus.
 
 **IMPORTANT**: This might appear after double-clicking on the installer.
 
-![image](https://github.com/v-pun215/eClient/assets/67716965/a7e67367-bb51-4c31-8b7f-14df083ad64d)
+<img src="https://github.com/v-pun215/eClient/assets/67716965/f6333cfa-874c-4d0d-a0a8-0e813b78de05" width=600px height=600px />
+
 
 To solve this issue, click ```More Info``` and then click ```Run Anyway```.
 
@@ -140,5 +130,5 @@ eClient (Mod Installer - List of Mods)
 
 
 ## Installation
-Check releases tab.
+Check the [wiki](https://github.com/v-pun215/eClient).
     
