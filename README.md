@@ -9,6 +9,7 @@ A Minecraft Launcher written in Python using Tkinter.
 
 Based on [PyCraft by shasankp000](https://github.com/shasankp000/PyCraft).
 
+# This project is on hold right now, I have quit coding right now, probably would get back into it later this year.
 ## Wiki
 Check out the [eClient Wiki](https://github.com/v-pun215/eClient/wiki), which has all the updated information on how to run Minecraft like you want to!
 
