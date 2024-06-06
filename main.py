@@ -44,7 +44,8 @@ from PyQt6.QtCore import QUrl, QLocale
 windll.shcore.SetProcessDpiAwareness(1)
 myappid = u'vpun215.eclient.idk.1.0' # arbitrary string
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
-
+#bros cooking
+#my gf left this here im not gonna remove it :D
 first=False
 global usr_accnt
 usr_accnt = getpass.getuser()
