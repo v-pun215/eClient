@@ -1,4 +1,4 @@
-
+##eClient is being rebuilt from the ground, to eliminate any bugs and also to imporve the UI. I will still use Python, but will now use customtkinter instead of Tkinter
 <h1 align="center">eClient</h1>
 
 ![260288489-08c52dcf-a60a-4e62-8350-7257f2cdcca4-modified](https://github.com/v-pun215/eClient/assets/67716965/1d990031-e88f-4956-a086-54b5b047e5ef)
@@ -9,7 +9,6 @@ A Minecraft Launcher written in Python using Tkinter.
 
 Based on [PyCraft by shasankp000](https://github.com/shasankp000/PyCraft).
 
-# This project is on hold right now, I have quit coding right now, probably would get back into it later this year.
 ## Wiki
 Check out the [eClient Wiki](https://github.com/v-pun215/eClient/wiki), which has all the updated information on how to run Minecraft like you want to!
 
