@@ -5,7 +5,9 @@ The launching alogrithm will not be changed majorly.
 
 I believe this should be done by August, but it could be finished by mid-July too so I'll keep updating the README to report progress.
 
-Anyways, a good, beefy update is coming soon. I'm gonna skip 1.9 and go straight to 2.0 cuz why not.
+Simultaneously, I'm also working on a new website, which looks epic.
+
+Anyways, a good, big update is coming soon. If you want to send suggestions, write some in Issues.
 <h1 align="center">eClient</h1>
 
 ![260288489-08c52dcf-a60a-4e62-8350-7257f2cdcca4-modified](https://github.com/v-pun215/eClient/assets/67716965/1d990031-e88f-4956-a086-54b5b047e5ef)
