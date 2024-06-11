@@ -1,4 +1,4 @@
-##eClient is being rebuilt from the ground, to eliminate any bugs and also to imporve the UI. I will still use Python, but will now use customtkinter instead of Tkinter
+## eClient is being rebuilt from the ground, to eliminate any bugs and also to imporve the UI. I will still use Python, but will now use customtkinter instead of Tkinter
 <h1 align="center">eClient</h1>
 
 ![260288489-08c52dcf-a60a-4e62-8350-7257f2cdcca4-modified](https://github.com/v-pun215/eClient/assets/67716965/1d990031-e88f-4956-a086-54b5b047e5ef)
