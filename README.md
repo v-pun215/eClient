@@ -8,6 +8,8 @@ I believe this should be done by August, but it could be finished by mid-July to
 Simultaneously, I'm also working on a new website, which looks epic.
 
 Anyways, a good, big update is coming soon. If you want to send suggestions, write some in Issues.
+
+ > Update: I'm caught up with exams at the moment, the update will be delayed till mid-October. 
 <h1 align="center">eClient</h1>
 
 ![260288489-08c52dcf-a60a-4e62-8350-7257f2cdcca4-modified](https://github.com/v-pun215/eClient/assets/67716965/1d990031-e88f-4956-a086-54b5b047e5ef)
