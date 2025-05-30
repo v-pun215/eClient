@@ -1,6 +1,11 @@
-## Important Announcement
-GO CHECK OUT ARGON!!! i rebuilt eclient finally and its up and published! (working on the website)
-[Here](https://github.com/v-pun215/Argon)
+# ⚠️ NOW DEPRECATED
+eClient has been completely re-written using [CustomTkinter](https://github.com/tomschimansky/customtkinter) which provides a better UI than vanilla tkinter. Additionally, many new features (including a fully-functional mod manager) have been added.
+
+eClient has been deprecated since May 30th, 2025. It will not be updated anymore. 
+
+It has been replaced by [Argon](https://github.com/v-pun215/Argon) which has a sleeker UI, more compatability, more features and better UX.
+
+
 <h1 align="center">eClient</h1>
 
 ![260288489-08c52dcf-a60a-4e62-8350-7257f2cdcca4-modified](https://github.com/v-pun215/eClient/assets/67716965/1d990031-e88f-4956-a086-54b5b047e5ef)
